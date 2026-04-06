@@ -1,0 +1,961 @@
+/* ==========================================================================
+   DIANE — V3 Power Statement
+   Immersive scroll story. Apple/Nike campaign style.
+   Film noir + haute couture. Sapphire glow in a black world.
+   ========================================================================== */
+
+/* --- Reset & Variables --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080808;
+    --bg-card: #121212;
+    --bg-elevated: #1A1A1A;
+    --sapphire: #1E40AF;
+    --sapphire-glow: #3B82F6;
+    --sapphire-neon: #60A5FA;
+    --warm-gold: #C4A882;
+    --text: #F0ECE8;
+    --text-dim: #666666;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- Film Grain Overlay --- */
+.grain {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    mix-blend-mode: overlay;
+}
+
+/* ==========================================================================
+   1. HERO — Le Statement
+   ========================================================================== */
+.hero {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -55%);
+    background: radial-gradient(circle, rgba(30, 64, 175, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 12vw, 14rem);
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--sapphire-glow);
+    text-shadow:
+        0 0 60px rgba(30, 64, 175, 0.4),
+        0 0 120px rgba(30, 64, 175, 0.15),
+        0 0 200px rgba(59, 130, 246, 0.08);
+    line-height: 1;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroTitleIn 1.4s var(--ease-out-expo) 0.3s forwards;
+}
+
+.hero__line {
+    width: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sapphire), transparent);
+    margin: 1.5rem 0;
+    animation: heroLineIn 0.8s var(--ease-out-expo) 1.4s forwards;
+}
+
+.hero__sub {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 300;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.hero__sub:first-of-type {
+    animation: heroSubIn 1s var(--ease-out-expo) 2s forwards;
+}
+
+.hero__sub--accent {
+    color: var(--text);
+    font-weight: 400;
+    margin-top: 0.3rem;
+    animation: heroSubIn 1s var(--ease-out-expo) 2.5s forwards;
+}
+
+/* Hero scroll indicator */
+.hero__scroll {
+    position: absolute;
+    bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    opacity: 0;
+    animation: heroScrollIn 1s var(--ease-out-expo) 3.2s forwards;
+}
+
+.hero__scroll-text {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite 3.5s;
+}
+
+/* Hero animations */
+@keyframes heroTitleIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroLineIn {
+    to { width: min(200px, 40vw); }
+}
+@keyframes heroSubIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroScrollIn {
+    to { opacity: 0.5; }
+}
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.8; transform: scaleY(1.3); }
+}
+
+/* ==========================================================================
+   2 & 6. PHOTO REVEAL Sections
+   ========================================================================== */
+.photo-reveal {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: var(--bg);
+}
+
+.photo-reveal__frame {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.photo-reveal__frame img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-reveal__frame::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to top, rgba(8, 8, 8, 0.4), transparent);
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Clip-path reveal — starts hidden */
+.photo-reveal__frame[data-reveal="clip"] {
+    clip-path: inset(15% 15%);
+    opacity: 0.3;
+    transform: scale(0.92);
+    transition:
+        clip-path 1.4s var(--ease-out-expo),
+        opacity 1.2s var(--ease-out-expo),
+        transform 1.6s var(--ease-out-expo);
+}
+
+.photo-reveal__frame[data-reveal="clip"].is-visible {
+    clip-path: inset(0% 0%);
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Caption */
+.photo-reveal__caption {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.8s var(--ease-out-expo) 0.4s, transform 0.8s var(--ease-out-expo) 0.4s;
+}
+
+.photo-reveal__caption.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.photo-reveal__number {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--sapphire-glow);
+}
+
+.photo-reveal__label {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+/* Mirror photo caption (italic quote) */
+.photo-reveal__caption--italic {
+    display: block;
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+.photo-reveal__caption--italic p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2vw, 1.6rem);
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   3. TEXT IMMERSIVE — La Phrase
+   ========================================================================== */
+.text-immersive {
+    position: relative;
+    background: var(--bg);
+}
+
+.text-immersive__phrase {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.text-immersive__phrase p {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.5vw, 5rem);
+    font-weight: 400;
+    text-align: center;
+    max-width: 900px;
+    line-height: 1.3;
+    color: var(--text);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+}
+
+.text-immersive__phrase.is-visible p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   4. BENTO GRID — L'Univers
+   ========================================================================== */
+.bento {
+    position: relative;
+    padding: 8rem 2rem;
+    background: var(--bg);
+}
+
+.bento__grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+    gap: 16px;
+}
+
+/* Tile base */
+.bento__tile {
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-card);
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+
+.bento__tile.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.bento__tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s var(--ease-out-expo);
+}
+
+.bento__tile:hover img {
+    transform: scale(1.04);
+}
+
+/* Large tile — span 2 col, 2 rows */
+.bento__tile--large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* Wide tile — span 2 col */
+.bento__tile--wide {
+    grid-column: span 2;
+    grid-row: span 1;
+    min-height: 260px;
+}
+
+.bento__tile--wide img {
+    object-position: center 40%;
+}
+
+/* Square tile */
+.bento__tile--square {
+    grid-column: span 1;
+    grid-row: span 1;
+    aspect-ratio: 1 / 1;
+}
+
+/* Stat tile */
+.bento__tile--stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+    border: 1px solid var(--glass-border);
+    background: var(--bg-card);
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.9s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+}
+
+.bento__tile--stat:hover {
+    box-shadow: 0 0 30px rgba(30, 64, 175, 0.12);
+}
+
+.bento__stat-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    box-shadow: inset 0 0 40px rgba(30, 64, 175, 0.08);
+    pointer-events: none;
+}
+
+.bento__stat-value {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(30, 64, 175, 0.2);
+}
+
+.bento__stat-unit {
+    font-size: 0.5em;
+    font-weight: 400;
+    color: var(--sapphire-glow);
+    margin-left: 0.05em;
+}
+
+.bento__stat-label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 0.75rem;
+}
+
+/* Text tile (glassmorphism) */
+.bento__tile--text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.bento__tile--text p {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+    font-weight: 400;
+    text-align: center;
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.bento__tile--text em {
+    color: var(--sapphire-glow);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   5. VIDEO SECTION — La Révélation
+   ========================================================================== */
+.video-section {
+    position: relative;
+    padding: 10rem 2rem;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-section__container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 64, 175, 0.2);
+    box-shadow: 0 0 60px rgba(30, 64, 175, 0.1), 0 0 120px rgba(30, 64, 175, 0.05);
+    clip-path: circle(8% at 50% 50%);
+    transition: clip-path 1.6s var(--ease-out-expo), border-radius 1.6s var(--ease-out-expo);
+}
+
+.video-section__container.is-expanded {
+    clip-path: circle(75% at 50% 50%);
+}
+
+.video-section__container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Specs line */
+.video-section__specs {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.8s var(--ease-out-expo) 0.6s, transform 0.8s var(--ease-out-expo) 0.6s;
+}
+
+.video-section__specs.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.video-section__specs span {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.video-section__specs-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--sapphire);
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   7. PRODUCT — Les Détails
+   ========================================================================== */
+.product {
+    position: relative;
+    padding: 10rem 2rem;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product__rings {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 5rem;
+}
+
+.product__ring {
+    width: min(380px, 42vw);
+    perspective: 800px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+
+.product__ring.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product__ring img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    transition: transform 0.4s var(--ease-out-quart);
+    will-change: transform;
+}
+
+.product__ring:hover img {
+    transform: rotateY(8deg) rotateX(-3deg) scale(1.03);
+}
+
+/* Specs table */
+.product__specs {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s var(--ease-out-expo) 0.2s, transform 0.8s var(--ease-out-expo) 0.2s;
+}
+
+.product__specs.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product__table tr {
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.product__table td {
+    padding: 1rem 0;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.product__spec-name {
+    font-weight: 500;
+    color: var(--text);
+    width: 35%;
+}
+
+.product__spec-value {
+    font-weight: 400;
+    color: var(--sapphire-glow);
+    text-align: center;
+    width: 30%;
+}
+
+.product__spec-detail {
+    font-weight: 300;
+    color: var(--text-dim);
+    text-align: right;
+    width: 35%;
+}
+
+/* Price */
+.product__price {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 500;
+    color: var(--warm-gold);
+    text-align: center;
+    padding-top: 3rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s var(--ease-out-expo) 0.4s, transform 0.8s var(--ease-out-expo) 0.4s;
+}
+
+.product__price::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sapphire), transparent);
+}
+
+.product__price.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   8. PHOTO FINALE — L'Arrivée
+   ========================================================================== */
+.photo-finale {
+    position: relative;
+    padding: 8rem 2rem;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.photo-finale__container {
+    position: relative;
+    max-width: 500px;
+    width: 70vw;
+    overflow: hidden;
+    border-radius: 8px;
+    transform: scale(0.85);
+    opacity: 0;
+    transition: transform 1.4s var(--ease-out-expo), opacity 1.2s var(--ease-out-expo);
+}
+
+.photo-finale__container.is-visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.photo-finale__container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.photo-finale__overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.photo-finale__title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 14vw, 10rem);
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--sapphire-glow);
+    text-shadow: 0 0 80px rgba(30, 64, 175, 0.3);
+    opacity: 0;
+    transition: opacity 1s var(--ease-out-expo) 0.6s;
+}
+
+.photo-finale__container.is-visible .photo-finale__title {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   9. CTA
+   ========================================================================== */
+.cta {
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    padding: 6rem 2rem;
+}
+
+.cta__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+}
+
+.cta__content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cta__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 500;
+    color: var(--sapphire-glow);
+    text-shadow:
+        0 0 60px rgba(30, 64, 175, 0.35),
+        0 0 120px rgba(30, 64, 175, 0.12);
+    letter-spacing: 0.1em;
+    line-height: 1;
+}
+
+.cta__edition {
+    font-family: var(--font-body);
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.cta__button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 3.5rem;
+    margin-top: 1rem;
+    border: 1px solid var(--sapphire);
+    border-radius: 0;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.15s ease-out, box-shadow 0.4s var(--ease-out-expo);
+    will-change: transform;
+}
+
+.cta__button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--sapphire);
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-out-expo);
+}
+
+.cta__button:hover {
+    box-shadow:
+        0 0 30px rgba(30, 64, 175, 0.25),
+        0 0 60px rgba(30, 64, 175, 0.1);
+}
+
+.cta__button:hover::before {
+    opacity: 0.15;
+}
+
+.cta__button-text {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+
+.cta__address {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    margin-top: 1.5rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE — Mobile
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    .bento__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .bento__tile--large {
+        grid-column: span 2;
+        grid-row: span 1;
+        min-height: 300px;
+    }
+
+    .bento__tile--wide {
+        grid-column: span 2;
+        min-height: 200px;
+    }
+
+    .bento__tile--text {
+        grid-column: span 2;
+    }
+
+    .product__rings {
+        gap: 2rem;
+    }
+
+    .product__ring {
+        width: min(300px, 80vw);
+    }
+
+    .product__table td {
+        font-size: 0.75rem;
+        padding: 0.75rem 0;
+    }
+
+    .photo-finale__container {
+        width: 85vw;
+        max-width: 400px;
+    }
+
+    .video-section {
+        padding: 6rem 1.5rem;
+    }
+
+    .video-section__specs {
+        gap: 0.75rem;
+    }
+
+    .video-section__specs span {
+        font-size: 0.65rem;
+    }
+
+    .cta__button {
+        padding: 0.85rem 2.5rem;
+    }
+
+    .text-immersive__phrase p {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .bento {
+        padding: 4rem 1rem;
+    }
+
+    .bento__grid {
+        gap: 10px;
+    }
+
+    .bento__stat-value {
+        font-size: 2rem;
+    }
+
+    .hero__title {
+        letter-spacing: 0.08em;
+    }
+
+    .photo-reveal {
+        padding: 3rem 1rem;
+    }
+
+    .product {
+        padding: 6rem 1.5rem;
+    }
+
+    .photo-finale__title {
+        -webkit-text-stroke: 1px var(--sapphire-glow);
+    }
+}
+
+/* ==========================================================================
+   UTILITY — Scroll lock (used by JS if needed)
+   ========================================================================== */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Selection color */
+::selection {
+    background: rgba(30, 64, 175, 0.3);
+    color: var(--text);
+}
+
+::-moz-selection {
+    background: rgba(30, 64, 175, 0.3);
+    color: var(--text);
+}

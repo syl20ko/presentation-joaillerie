@@ -1,0 +1,827 @@
+/* ============================================
+   DIANE — V2 FASHION WEEK
+   Editorial lookbook — La Joaillerie
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500&display=swap');
+
+/* --- Tokens --- */
+:root {
+  --bg: #0C0C0C;
+  --bg-warm: #141210;
+  --sapphire: #1E40AF;
+  --sapphire-light: #60A5FA;
+  --sapphire-glow: rgba(30, 64, 175, 0.35);
+  --warm: #C4A882;
+  --warm-dim: rgba(196, 168, 130, 0.4);
+  --text: #E8E4E0;
+  --text-dim: #5A5A5A;
+  --text-ghost: #1A1A1A;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-accent: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 200;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Film Grain Overlay --- */
+body::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  animation: grainDrift 8s steps(10) infinite;
+}
+
+@keyframes grainDrift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
+}
+
+/* --- Progress Bar --- */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--sapphire), var(--sapphire-light));
+  z-index: 10000;
+  transition: width 0.1s linear, opacity 0.4s ease;
+  box-shadow: 0 0 8px var(--sapphire-glow);
+}
+
+/* ============================================
+   SECTION 1 — HERO
+   ============================================ */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(4rem, 15vw, 16rem);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sapphire);
+  line-height: 1;
+  text-indent: 0.3em; /* Compensate letter-spacing on centering */
+  animation: shimmer 4s ease-in-out infinite;
+  position: relative;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    text-shadow:
+      0 0 20px rgba(30, 64, 175, 0.15),
+      0 0 60px rgba(30, 64, 175, 0.05);
+  }
+  50% {
+    text-shadow:
+      0 0 30px rgba(96, 165, 250, 0.3),
+      0 0 80px rgba(30, 64, 175, 0.15),
+      0 0 120px rgba(30, 64, 175, 0.05);
+  }
+}
+
+.hero__line {
+  width: 60px;
+  height: 1px;
+  background: var(--sapphire);
+  margin: 2.5rem 0;
+  opacity: 0;
+  animation: fadeLineIn 1.5s 0.8s ease forwards;
+}
+
+@keyframes fadeLineIn {
+  to { opacity: 0.6; }
+}
+
+.hero__subtitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  color: var(--text-dim);
+  opacity: 0;
+  animation: fadeUp 1.5s 1.2s ease forwards;
+}
+
+.hero__edition {
+  position: absolute;
+  bottom: 3rem;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0;
+  animation: fadeUp 1.5s 1.8s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll hint */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 30px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 1.5s 2.5s ease forwards;
+}
+
+.hero__scroll-hint::after {
+  content: '';
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 1px;
+  height: 30px;
+  background: var(--sapphire-light);
+  animation: scrollDash 2s ease-in-out infinite;
+}
+
+@keyframes scrollDash {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+
+
+/* ============================================
+   SECTION 2 — LOOKBOOK CARDS
+   ============================================ */
+.lookbook-cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* --- Card reveal animation --- */
+.card-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.card-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Card base --- */
+.lk-card { position: relative; }
+
+/* --- Numeral --- */
+.lk-card__numeral {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0.5;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Split card (image + text side by side) --- */
+.lk-card--split {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.lk-card--split.lk-card--reverse {
+  grid-template-columns: 1fr 1.2fr;
+}
+
+.lk-card--split.lk-card--reverse .lk-card__img {
+  order: 2;
+}
+
+.lk-card--split.lk-card--reverse .lk-card__text {
+  order: 1;
+}
+
+.lk-card__img {
+  overflow: hidden;
+  border-radius: 4px;
+  position: relative;
+}
+
+.lk-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 1.2s ease;
+}
+
+.lk-card__img:hover img {
+  transform: scale(1.03);
+}
+
+/* Cinematic vignette */
+.lk-card__img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(12, 12, 12, 0.3) 100%);
+  pointer-events: none;
+}
+
+.lk-card__chapter {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--warm);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lk-card__chapter::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 1px;
+  background: var(--warm-dim);
+}
+
+.lk-card__quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.8;
+}
+
+/* --- Full-width card (image with overlay text) --- */
+.lk-card--full {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.lk-card--full .lk-card__img img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.lk-card__overlay-text {
+  position: absolute;
+  bottom: 2rem;
+  right: 3rem;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  color: var(--text);
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Product card (video + specs) --- */
+.lk-card--product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.lk-card__video {
+  overflow: hidden;
+  border-radius: 4px;
+  position: relative;
+  background: #f0eeec;
+  aspect-ratio: 1;
+}
+
+.lk-card__video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lk-card__video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(196, 168, 130, 0.15);
+  pointer-events: none;
+}
+
+.lk-card__specs-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.lk-card__specs-sub {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--warm);
+  margin-bottom: 2.5rem;
+  opacity: 0.7;
+}
+
+.lk-card__specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.lk-card__spec-label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.4rem;
+}
+
+.lk-card__spec-value {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.lk-card__price {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: var(--warm);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(196, 168, 130, 0.15);
+}
+
+/* --- Duo card (two images side by side) --- */
+.lk-card--duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.lk-card--duo .lk-card__img img {
+  aspect-ratio: 4 / 5;
+}
+
+/* --- Finale card --- */
+.lk-card--finale {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.lk-card__finale-name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.25em;
+  text-indent: 0.25em;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.lk-card__finale-details {
+  font-family: var(--font-body);
+  font-weight: 200;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+}
+
+.lk-card__finale-details span {
+  margin: 0 0.8rem;
+  opacity: 0.3;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .lk-card--split,
+  .lk-card--split.lk-card--reverse {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .lk-card--split.lk-card--reverse .lk-card__img { order: 0; }
+  .lk-card--split.lk-card--reverse .lk-card__text { order: 0; }
+  .lk-card--product {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .lk-card--duo {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(232, 228, 224, 0.2);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--sapphire);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.btn:hover {
+  border-color: var(--sapphire);
+  color: #fff;
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn--sapphire {
+  border-color: var(--sapphire);
+  box-shadow: 0 0 20px var(--sapphire-glow);
+}
+
+.btn--sapphire:hover {
+  box-shadow: 0 0 40px var(--sapphire-glow);
+}
+
+
+/* ============================================
+   SECTION 3 — PRODUCT
+   ============================================ */
+.product-section {
+  position: relative;
+  padding: 10rem 0 6rem;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.product-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(196, 168, 130, 0.2), transparent);
+}
+
+.product-section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-section__images {
+  display: flex;
+  gap: 4rem;
+  margin-bottom: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-section__img {
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
+  background: #f0eeec;
+  position: relative;
+  border: 1px solid rgba(232, 228, 224, 0.06);
+}
+
+.product-section__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: contrast(1.05) saturate(1.1);
+  transition: transform 0.6s ease;
+}
+
+.product-section__img:hover img {
+  transform: scale(1.05);
+}
+
+.product-section__label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.product-section__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 4rem;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(232, 228, 224, 0.06);
+  border-bottom: 1px solid rgba(232, 228, 224, 0.06);
+}
+
+.product-section__spec {
+  text-align: center;
+}
+
+.product-section__spec-label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.55rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.8rem;
+}
+
+.product-section__spec-value {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.product-section__price {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
+  color: var(--warm);
+}
+
+
+/* ============================================
+   SECTION 4 — CTA / FOOTER
+   ============================================ */
+.cta-section {
+  padding: 8rem 2rem;
+  text-align: center;
+  background: var(--bg-warm);
+  position: relative;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--sapphire), transparent);
+  opacity: 0.3;
+}
+
+.cta__heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.cta__address {
+  font-family: var(--font-body);
+  font-weight: 200;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.footer {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: var(--bg);
+  border-top: 1px solid rgba(232, 228, 224, 0.04);
+}
+
+.footer__brand {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 0.7rem;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.5rem;
+}
+
+.footer__copy {
+  font-family: var(--font-body);
+  font-weight: 200;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(90, 90, 90, 0.5);
+}
+
+
+/* ============================================
+   SCROLL-TRIGGERED REVEALS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal--delay-1 { transition-delay: 0.15s; }
+.reveal--delay-2 { transition-delay: 0.3s; }
+.reveal--delay-3 { transition-delay: 0.45s; }
+.reveal--delay-4 { transition-delay: 0.6s; }
+
+
+/* ============================================
+   ADDITIONAL REFINEMENTS
+   ============================================ */
+
+/* Card entrance handled by .card-reveal / .visible in section 2 */
+
+/* Elegant selection color */
+::selection {
+  background: var(--sapphire);
+  color: #fff;
+}
+
+/* Smooth scrollbar (WebKit) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-ghost);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+
+/* ============================================
+   RESPONSIVE — MOBILE
+   ============================================ */
+@media (max-width: 900px) {
+  .hero__title {
+    font-size: clamp(3rem, 14vw, 8rem);
+    letter-spacing: 0.2em;
+    text-indent: 0.2em;
+  }
+
+  .product-section__images {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .product-section__img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .product-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .progress-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__subtitle {
+    font-size: 1rem;
+    padding: 0 2rem;
+    text-align: center;
+  }
+
+  .hero__edition {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+  }
+
+  .product-section__price {
+    font-size: 2.2rem;
+  }
+}

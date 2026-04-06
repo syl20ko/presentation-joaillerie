@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stockholm — Bague Or Rouge Pavage Diamants | La Joaillerie</title>
+  <meta name="description" content="Bague Stockholm en or rouge 18 carats, entièrement pavée de 24 diamants naturels. Fabrication artisanale à Nice. La Joaillerie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- HEADER FIXE                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="header-logo">La Joaillerie</a>
+      <nav class="header-nav" id="headerNav">
+        <a href="#" class="nav-link active">Bagues</a>
+        <a href="#" class="nav-link">Colliers</a>
+        <a href="#" class="nav-link">Boucles</a>
+        <a href="#" class="nav-link">Bracelets</a>
+      </nav>
+      <div class="header-actions">
+        <button class="header-icon" aria-label="Rechercher">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+        <button class="header-icon" aria-label="Mon compte">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+        </button>
+        <button class="header-icon cart-icon" aria-label="Panier">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          <span class="cart-badge">1</span>
+        </button>
+        <button class="burger-btn" id="burgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#" class="nav-link active">Bagues</a>
+      <a href="#" class="nav-link">Colliers</a>
+      <a href="#" class="nav-link">Boucles</a>
+      <a href="#" class="nav-link">Bracelets</a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FIL D'ARIANE                                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <div class="breadcrumb-inner">
+      <a href="#">Accueil</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="#">Bagues</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <a href="#">Collection Stockholm</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span class="current">Stockholm</span>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION PRODUIT HERO — SPLIT 50/50          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <main class="product-hero">
+    <div class="product-hero-inner">
+
+      <!-- COLONNE GAUCHE : GALERIE -->
+      <div class="gallery" id="gallery">
+        <div class="gallery-main">
+          <button class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Image précédente">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="gallery-main-img-wrap">
+            <img id="mainImage" src="https://images.prismic.io/ljn-vitrine-next/aPtxaLpReVYa3pW__Moscow1.png?auto=format,compress" alt="Bague Stockholm — vue de face" class="gallery-main-img">
+          </div>
+          <button class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Image suivante">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs">
+          <button class="thumb active" data-index="0">
+            <img src="https://images.prismic.io/ljn-vitrine-next/aPtxaLpReVYa3pW__Moscow1.png?auto=format,compress" alt="Vue face" loading="lazy">
+          </button>
+          <button class="thumb" data-index="1">
+            <img src="https://images.prismic.io/ljn-vitrine-next/aPtxwbpReVYa3pXe_Moscow2.png?auto=format,compress" alt="Vue angle" loading="lazy">
+          </button>
+          <button class="thumb" data-index="2">
+            <img src="../../photos/Stockholm/Generated%20Image%20April%2003%2C%202026%20-%2011_43PM.jpg" alt="Portée — bibliothèque" loading="lazy">
+          </button>
+          <button class="thumb" data-index="3">
+            <img src="../../photos/Stockholm/Generated%20Image%20April%2003%2C%202026%20-%2011_56PM.jpg" alt="Portée — calligraphie" loading="lazy">
+          </button>
+          <button class="thumb" data-index="4">
+            <img src="../../photos/Stockholm/Generated%20Image%20April%2004%2C%202026%20-%2012_01AM.jpg" alt="Écrin" loading="lazy">
+          </button>
+        </div>
+      </div>
+
+      <!-- COLONNE DROITE : DETAILS -->
+      <div class="product-details">
+        <div class="product-details-scroll">
+
+          <!-- Titre & prix -->
+          <h1 class="product-name">Stockholm</h1>
+          <p class="product-subtitle">Bague Or Rouge 18 carats — Pavage Diamants</p>
+          <div class="product-price-block">
+            <span class="product-price">4 870 €</span>
+            <span class="product-installment">ou 3 × 1 623 €</span>
+          </div>
+          <div class="product-availability">
+            <span class="availability-dot"></span>
+            Disponible immédiatement
+          </div>
+
+          <div class="selectors-divider"></div>
+
+          <!-- SELECTEUR METAL -->
+          <div class="selector" id="selectorMetal">
+            <button class="selector-header" aria-expanded="true">
+              <span class="selector-label">Métal</span>
+              <span class="selector-value" id="metalValue">Or Rouge 18 carats</span>
+              <svg class="selector-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="selector-body open">
+              <label class="metal-option selected">
+                <input type="radio" name="metal" value="or-rouge" checked>
+                <span class="metal-swatch" style="background: linear-gradient(135deg, #C1908E, #B07472);"></span>
+                <span class="metal-info">
+                  <strong>Or Rouge 18 carats</strong>
+                  <small>Chaud et contemporain, alliage 750/1000</small>
+                </span>
+                <span class="metal-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </label>
+              <label class="metal-option">
+                <input type="radio" name="metal" value="or-jaune">
+                <span class="metal-swatch" style="background: linear-gradient(135deg, #E8D380, #C9A84C);"></span>
+                <span class="metal-info">
+                  <strong>Or Jaune 18 carats</strong>
+                  <small>Classique et intemporel, éclat solaire</small>
+                </span>
+                <span class="metal-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </label>
+              <label class="metal-option">
+                <input type="radio" name="metal" value="or-blanc">
+                <span class="metal-swatch" style="background: linear-gradient(135deg, #E8E6E3, #C0BDB8);"></span>
+                <span class="metal-info">
+                  <strong>Or Blanc 18 carats</strong>
+                  <small>Éclat froid et moderne, allié au rhodium</small>
+                </span>
+                <span class="metal-check">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SELECTEUR PIERRE -->
+          <div class="selector" id="selectorPierre">
+            <button class="selector-header" aria-expanded="false">
+              <span class="selector-label">Pierre</span>
+              <span class="selector-value">Diamants naturels</span>
+              <svg class="selector-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="selector-body">
+              <div class="stone-info">
+                <div class="stone-icon">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.2">
+                    <polygon points="12 2 22 8.5 18 22 6 22 2 8.5"/>
+                    <line x1="12" y1="2" x2="6" y2="22"/><line x1="12" y1="2" x2="18" y2="22"/>
+                    <line x1="2" y1="8.5" x2="22" y2="8.5"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Diamants naturels</strong>
+                  <p>Pavage 0,63 ct total — Qualité VS — Taille brillant<br>24 pierres serties à la main</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SELECTEUR TAILLE -->
+          <div class="selector" id="selectorTaille">
+            <button class="selector-header" aria-expanded="true">
+              <span class="selector-label">Taille</span>
+              <span class="selector-value" id="sizeValue">Sélectionnez votre taille</span>
+              <svg class="selector-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="selector-body open">
+              <div class="size-grid" id="sizeGrid">
+                <button class="size-btn" data-size="48">48</button>
+                <button class="size-btn" data-size="49">49</button>
+                <button class="size-btn" data-size="50">50</button>
+                <button class="size-btn" data-size="51">51</button>
+                <button class="size-btn" data-size="52">52</button>
+                <button class="size-btn" data-size="53">53</button>
+                <button class="size-btn" data-size="54">54</button>
+                <button class="size-btn" data-size="55">55</button>
+                <button class="size-btn" data-size="56">56</button>
+                <button class="size-btn" data-size="57">57</button>
+                <button class="size-btn" data-size="58">58</button>
+                <button class="size-btn" data-size="59">59</button>
+                <button class="size-btn" data-size="60">60</button>
+              </div>
+              <div class="size-helpers">
+                <a href="#" class="size-guide-link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  Guide des tailles
+                </a>
+                <a href="#" class="size-unknown-link">Je ne connais pas ma taille</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- GRAVURE -->
+          <div class="selector" id="selectorGravure">
+            <button class="selector-header" aria-expanded="false">
+              <span class="selector-label">Gravure</span>
+              <span class="selector-value" id="gravureValue">Optionnelle · +30 €</span>
+              <svg class="selector-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="selector-body">
+              <div class="gravure-content">
+                <div class="gravure-toggle-row">
+                  <span>Ajouter une gravure</span>
+                  <label class="toggle">
+                    <input type="checkbox" id="gravureToggle">
+                    <span class="toggle-slider"></span>
+                  </label>
+                  <span class="gravure-price">+30 €</span>
+                </div>
+                <div class="gravure-input-wrap" id="gravureInputWrap" style="display:none;">
+                  <input type="text" id="gravureInput" maxlength="15" placeholder="Votre texte (15 car. max)" class="gravure-input">
+                  <span class="gravure-counter"><span id="gravureCount">0</span>/15</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="selectors-divider"></div>
+
+          <!-- CTAs -->
+          <div class="cta-block">
+            <button class="btn-primary" id="addToCart">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              Ajouter au panier
+            </button>
+            <button class="btn-secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Découvrir en boutique
+            </button>
+            <div class="share-row">
+              <button class="share-btn" aria-label="Envoyer par email">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </button>
+              <button class="share-btn" aria-label="Partager sur WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </button>
+              <button class="share-btn" aria-label="Ajouter aux favoris">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- ACCORDEONS DETAILS                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="product-accordions">
+    <div class="accordions-inner">
+
+      <div class="accordion open" id="accDescription">
+        <button class="accordion-header" aria-expanded="true">
+          <span>Description</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><line class="accordion-plus-v" x1="12" y1="5" x2="12" y2="19"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>Une bague féminine et élégante en or rouge 18 carats, entièrement pavée de diamants qui captent la lumière à chaque mouvement. Stockholm est un bijou d'exception, conçu pour sublimer la main avec éclat et raffinement.</p>
+          <p>Inspirée par l'esthétique scandinave et sa quête de pureté dans les formes, cette création marie la géométrie nordique à la chaleur de l'or rouge. Chaque facette évoque la lumière du Nord, capturée dans le scintillement de 24 diamants sertis à la main.</p>
+          <p>Portée au quotidien ou pour les grandes occasions, Stockholm s'impose comme une pièce maîtresse de toute collection — un pont entre rigueur géométrique et sensualité méditerranéenne.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="accModele">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Le Modèle</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><line class="accordion-plus-v" x1="12" y1="5" x2="12" y2="19"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>Stockholm est née de la rencontre entre la rigueur géométrique du design scandinave et la chaleur méditerranéenne. Son plateau carré, signature distinctive de la collection, rompt avec les formes rondes traditionnelles pour offrir une silhouette architecturale, résolument moderne.</p>
+          <p>Le pavage grain, technique ancestrale exigeante, est réalisé entièrement à la main dans notre atelier niçois. Chaque diamant est posé individuellement, enchâssé dans de minuscules grains d'or relevés au burin — un travail de patience qui peut prendre plusieurs jours pour une seule bague.</p>
+          <p>Le choix de l'or rouge 18 carats apporte une tonalité chaleureuse et contemporaine, en contraste sublime avec l'éclat blanc des diamants. Un équilibre savamment orchestré entre tradition joaillière et audace créative.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="accCaracteristiques">
+        <button class="accordion-header" aria-expanded="false">
+          <span>Caractéristiques techniques</span>
+          <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><line class="accordion-plus-v" x1="12" y1="5" x2="12" y2="19"/></svg>
+        </button>
+        <div class="accordion-body">
+          <table class="specs-table">
+            <tbody>
+              <tr><td>Métal</td><td>Or rouge 18 carats (750/1000)</td></tr>
+              <tr><td>Poids</td><td>4,96 g</td></tr>
+              <tr><td>Pierres</td><td>Diamants naturels — 0,63 ct total</td></tr>
+              <tr><td>Sertissage</td><td>Pavage grain, pose manuelle</td></tr>
+              <tr><td>Nombre de pierres</td><td>24+ diamants taille brillant</td></tr>
+              <tr><td>Design</td><td>Plateau carré, profil architectural</td></tr>
+              <tr><td>Fabrication</td><td>Artisanale — Nice, France</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- NOS ENGAGEMENTS                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="commitments">
+    <div class="commitments-inner">
+      <h2 class="section-title">Nos engagements</h2>
+      <div class="commitments-grid">
+        <div class="commitment-card">
+          <div class="commitment-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <h3>Fabrication artisanale</h3>
+          <p>Chaque pièce est façonnée à la main dans notre atelier niçois par des artisans d'exception.</p>
+        </div>
+        <div class="commitment-card">
+          <div class="commitment-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 8.5 18 22 6 22 2 8.5"/>
+              <line x1="12" y1="2" x2="12" y2="22"/>
+              <line x1="2" y1="8.5" x2="22" y2="8.5"/>
+            </svg>
+          </div>
+          <h3>Diamants certifiés</h3>
+          <p>Pierres naturelles traçables, certifiées par les laboratoires internationaux de gemmologie.</p>
+        </div>
+        <div class="commitment-card">
+          <div class="commitment-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 3 20 16 16 16"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <h3>Livraison assurée</h3>
+          <p>Envoi sécurisé, écrin offert et assurance incluse. Livraison offerte en France métropolitaine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PRODUITS SIMILAIRES                         -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="similar-products">
+    <div class="similar-inner">
+      <h2 class="section-title">Vous aimerez aussi</h2>
+      <div class="similar-carousel" id="similarCarousel">
+        <div class="similar-track" id="similarTrack">
+          <a href="#" class="similar-card">
+            <div class="similar-card-img">
+              <span class="similar-placeholder-text">Balmoral</span>
+            </div>
+            <div class="similar-card-info">
+              <h3>Balmoral</h3>
+              <p>Bague Or Jaune — Solitaire</p>
+              <span class="similar-price">3 200 €</span>
+            </div>
+          </a>
+          <a href="#" class="similar-card">
+            <div class="similar-card-img">
+              <span class="similar-placeholder-text">Windsor</span>
+            </div>
+            <div class="similar-card-info">
+              <h3>Windsor</h3>
+              <p>Bague Or Blanc — Toi & Moi</p>
+              <span class="similar-price">2 800 €</span>
+            </div>
+          </a>
+          <a href="#" class="similar-card">
+            <div class="similar-card-img">
+              <span class="similar-placeholder-text">Helsinki</span>
+            </div>
+            <div class="similar-card-info">
+              <h3>Helsinki</h3>
+              <p>Bague Or Rouge — Pavage</p>
+              <span class="similar-price">4 100 €</span>
+            </div>
+          </a>
+          <a href="#" class="similar-card">
+            <div class="similar-card-img">
+              <span class="similar-placeholder-text">Oslo</span>
+            </div>
+            <div class="similar-card-info">
+              <h3>Oslo</h3>
+              <p>Bague Or Blanc — Trilogie</p>
+              <span class="similar-price">3 650 €</span>
+            </div>
+          </a>
+        </div>
+        <button class="carousel-arrow carousel-arrow--left" id="carouselPrev" aria-label="Précédent">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="carousel-arrow carousel-arrow--right" id="carouselNext" aria-label="Suivant">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- BLOCS SERVICE                               -->
+  <!-- ═══════════════════════════════════════════ -->
+  <section class="service-blocks">
+    <div class="service-inner">
+      <h2 class="section-title">À votre service</h2>
+      <div class="service-accordion" id="serviceAccordion">
+
+        <div class="service-item">
+          <button class="service-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 3 20 16 16 16"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Livraison</span>
+            <svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="service-body">
+            <p>Offerte en France métropolitaine. Livraison en 3 à 5 jours ouvrés, par transporteur sécurisé avec signature requise. Envoi assuré à hauteur de la valeur du bijou.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <button class="service-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span>Paiement</span>
+            <svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="service-body">
+            <p>Carte bancaire, virement bancaire, ou paiement en 3 fois sans frais. Paiement 100% sécurisé par cryptage SSL.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <button class="service-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            <span>Retours</span>
+            <svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="service-body">
+            <p>30 jours pour changer d'avis. Retour gratuit avec étiquette prépayée. Remboursement intégral sous 48h après réception.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <button class="service-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Service client</span>
+            <svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="service-body">
+            <p>Du mardi au samedi, de 10h à 19h. Joignable par téléphone, email ou directement en boutique à Nice.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <button class="service-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Garantie</span>
+            <svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="service-body">
+            <p>Garantie à vie sur toutes nos créations. Nous nous engageons à entretenir et restaurer chaque bijou issu de notre maison.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <button class="service-header">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+            <span>Remise à taille</span>
+            <svg class="service-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="service-body">
+            <p>Gratuite, une fois, dans l'année suivant votre achat. Réalisée dans notre atelier par nos artisans joailliers.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- FOOTER                                      -->
+  <!-- ═══════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>La Maison</h4>
+          <a href="#">Notre histoire</a>
+          <a href="#">L'atelier</a>
+          <a href="#">Savoir-faire</a>
+          <a href="#">Engagements</a>
+        </div>
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="#">Bagues</a>
+          <a href="#">Colliers</a>
+          <a href="#">Boucles d'oreilles</a>
+          <a href="#">Bracelets</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="#">Livraison & retours</a>
+          <a href="#">Paiement</a>
+          <a href="#">Garantie à vie</a>
+          <a href="#">Remise à taille</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="#">Nice, France</a>
+          <a href="#">contact@lajoaillerie.fr</a>
+          <a href="#">04 93 XX XX XX</a>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Pinterest">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 12a4 4 0 1 1 8 0c0 3-2 5-4 7"/><line x1="12" y1="12" x2="10" y2="22"/><circle cx="12" cy="12" r="10"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-newsletter">
+        <p>Recevez nos nouveautés en avant-première</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Votre adresse email" class="newsletter-input">
+          <button type="submit" class="newsletter-btn">S'inscrire</button>
+        </form>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 La Joaillerie — Nice, France</p>
+        <div class="footer-legal">
+          <a href="#">Mentions légales</a>
+          <a href="#">CGV</a>
+          <a href="#">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balmoral — Bague Or Blanc | La Joaillerie</title>
+    <meta name="description" content="Bague Balmoral en or blanc 18 carats, perle des mers du Sud 12 ct, pavage 24 diamants 0,76 ct. Fabrication artisanale française. La Joaillerie, 30 rue Pastorelli, Nice.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Preload first frame -->
+    <link rel="preload" as="image" href="frames/frame_0001.webp">
+</head>
+<body>
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo" aria-label="La Joaillerie — Accueil">
+                <span class="logo-text">La Joaillerie</span>
+            </a>
+            <nav class="header-nav" aria-label="Navigation principale">
+                <a href="#">Bagues</a>
+                <a href="#">Colliers</a>
+                <a href="#">Boucles</a>
+                <a href="#">Bracelets</a>
+            </nav>
+            <div class="header-actions">
+                <button class="header-icon-btn" aria-label="Rechercher">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </button>
+                <button class="header-icon-btn" aria-label="Compte">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </button>
+                <button class="header-icon-btn cart-btn" aria-label="Panier">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ═══════════════ MAIN SPLIT LAYOUT ═══════════════ -->
+    <main class="split-layout" id="splitLayout">
+
+        <!-- LEFT: Fixed Canvas Panel -->
+        <div class="panel-left" id="panelLeft">
+            <canvas id="ringCanvas"></canvas>
+            <div class="canvas-feather"></div>
+            <!-- Loading progress -->
+            <div class="loading-overlay" id="loadingOverlay">
+                <div class="loading-inner">
+                    <div class="loading-ring-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#B8965A" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/></svg>
+                    </div>
+                    <div class="loading-bar-track">
+                        <div class="loading-bar-fill" id="loadingBar"></div>
+                    </div>
+                    <p class="loading-text" id="loadingText">Chargement 0%</p>
+                </div>
+            </div>
+            <!-- Mobile photo gallery (visible on mobile only) -->
+            <div class="mobile-photo-dots" id="mobilePhotoDots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <!-- RIGHT: Scrollable Product Panel -->
+        <div class="panel-right" id="panelRight">
+            <div class="panel-right-inner" id="panelRightInner">
+
+                <!-- ── BREADCRUMB ── -->
+                <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                    <a href="#">Accueil</a>
+                    <span class="sep">/</span>
+                    <a href="#">Bagues</a>
+                    <span class="sep">/</span>
+                    <span class="current">Balmoral</span>
+                </nav>
+
+                <!-- ── PRODUCT HEADER ── -->
+                <section class="product-header anim-section">
+                    <h1 class="product-title">Balmoral</h1>
+                    <p class="product-subtitle">Bague&ensp;|&ensp;Or Blanc 18 carats</p>
+                    <div class="product-price-block">
+                        <span class="product-price">4&nbsp;690&nbsp;€</span>
+                        <span class="product-installment">ou 3 × 1&nbsp;563,33&nbsp;€ sans frais</span>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars" aria-label="5 étoiles sur 5">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <a href="#reviews" class="rating-link">258 avis</a>
+                    </div>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── CONFIGURATION ── -->
+                <section class="config-section anim-section">
+                    <div class="config-group">
+                        <label class="config-label">Taille <span class="config-label-hint">— Tour de doigt</span></label>
+                        <div class="size-selector" id="sizeSelector">
+                            <button class="size-pill sur-commande" data-size="48" title="Sur commande — 3 semaines">48</button>
+                            <button class="size-pill sur-commande" data-size="49" title="Sur commande — 3 semaines">49</button>
+                            <button class="size-pill sur-commande" data-size="50" title="Sur commande — 3 semaines">50</button>
+                            <button class="size-pill sur-commande" data-size="51" title="Sur commande — 3 semaines">51</button>
+                            <button class="size-pill sur-commande" data-size="52" title="Sur commande — 3 semaines">52</button>
+                            <button class="size-pill sur-commande" data-size="53" title="Sur commande — 3 semaines">53</button>
+                            <button class="size-pill sur-commande" data-size="54" title="Sur commande — 3 semaines">54</button>
+                            <button class="size-pill in-stock" data-size="55">55</button>
+                            <button class="size-pill in-stock" data-size="56">56</button>
+                            <button class="size-pill in-stock selected" data-size="57">57</button>
+                            <button class="size-pill in-stock" data-size="58">58</button>
+                            <button class="size-pill in-stock" data-size="59">59</button>
+                            <button class="size-pill sur-commande" data-size="60" title="Sur commande — 3 semaines">60</button>
+                            <button class="size-pill sur-commande" data-size="61" title="Sur commande — 3 semaines">61</button>
+                            <button class="size-pill sur-commande" data-size="62" title="Sur commande — 3 semaines">62</button>
+                        </div>
+                        <div class="size-meta">
+                            <a href="#" class="size-guide-link">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                Guide des tailles
+                            </a>
+                            <a href="#" class="baguier-link">Recevez un baguier gratuitement</a>
+                        </div>
+                        <div class="stock-notice" id="stockNotice">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4a9e6b" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <span>En stock — Expédition sous 48h</span>
+                        </div>
+                    </div>
+
+                    <!-- Engraving -->
+                    <div class="config-group engraving-group">
+                        <div class="engraving-toggle">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="engravingToggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span class="engraving-label">Ajouter une gravure <span class="engraving-price">(+30 €)</span></span>
+                        </div>
+                        <div class="engraving-input-wrap" id="engravingWrap" style="display:none;">
+                            <input type="text" id="engravingText" maxlength="20" placeholder="Votre message (20 caractères max)" class="engraving-input">
+                            <div class="engraving-font-select">
+                                <button class="font-opt selected" data-font="script">𝓢𝓬𝓻𝓲𝓹𝓽</button>
+                                <button class="font-opt" data-font="serif">Serif</button>
+                                <button class="font-opt" data-font="sans">Sans</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="config-actions">
+                        <button class="btn-primary" id="addToCart">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                            Ajouter au panier — <span id="cartPriceLabel">4&nbsp;690&nbsp;€</span>
+                        </button>
+                        <button class="btn-secondary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Prendre rendez-vous en boutique
+                        </button>
+                    </div>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── GUARANTEES BAR ── -->
+                <section class="guarantees anim-section">
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 15l2 2 4-4"/></svg>
+                        </div>
+                        <span>Fabrication<br>artisanale française</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 3 20 16 16 16"/><line x1="23" y1="3" x2="23" y2="16"/><path d="M1 19h22"/></svg>
+                        </div>
+                        <span>Livraison offerte<br>et assurée</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                        </div>
+                        <span>Retour gratuit<br>30 jours</span>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                        </div>
+                        <span>Garantie<br>à vie</span>
+                    </div>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── DESCRIPTION ── -->
+                <section class="description-section anim-section">
+                    <h2 class="section-heading">L'histoire de Balmoral</h2>
+                    <p class="description-text">
+                        La bague Balmoral incarne la grâce et la distinction avec une perle des mers du Sud d'une rondeur parfaite, sertie dans un pavage de diamants sur or blanc 18 carats.
+                    </p>
+                    <p class="description-text">
+                        Chaque perle est sélectionnée à la main pour son lustre exceptionnel et sa teinte nacre rosée. Le pavage de 24 diamants taille brillant crée un halo lumineux qui magnifie la perle et capture la lumière sous tous les angles.
+                    </p>
+                    <p class="description-text">
+                        Façonnée dans nos ateliers de joaillerie en France, la monture en or blanc est polie à la main pour offrir un confort absolu au porter quotidien. Un bijou d'exception qui traverse les générations.
+                    </p>
+
+                    <!-- Écrin -->
+                    <div class="ecrin-block">
+                        <h3 class="ecrin-title">L'écrin</h3>
+                        <p class="ecrin-text">Chaque création La Joaillerie est livrée dans un écrin haut de gamme en cuir bleu marine, accompagné d'un certificat d'authenticité et d'un sachet de voyage en soie.</p>
+                        <div class="ecrin-image-wrap">
+                            <img src="photos/ecrain.jpg" alt="Écrin La Joaillerie bleu marine" class="ecrin-image" loading="lazy">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── TECHNICAL SPECS (Accordion) ── -->
+                <section class="specs-section anim-section">
+                    <h2 class="section-heading">Caractéristiques</h2>
+
+                    <div class="accordion" id="accordion">
+                        <div class="accordion-item open">
+                            <button class="accordion-header" aria-expanded="true">
+                                <span>Monture</span>
+                                <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                            <div class="accordion-body">
+                                <table class="spec-table">
+                                    <tr><td>Métal</td><td>Or blanc 18 carats (750/1000)</td></tr>
+                                    <tr><td>Poids or</td><td>5,5 g</td></tr>
+                                    <tr><td>Finition</td><td>Poli miroir</td></tr>
+                                    <tr><td>Poinçon</td><td>Aigle — Or 18 carats</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Pierre principale</span>
+                                <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                            <div class="accordion-body">
+                                <table class="spec-table">
+                                    <tr><td>Pierre</td><td>Perle blanche des mers du Sud</td></tr>
+                                    <tr><td>Poids</td><td>12 ct</td></tr>
+                                    <tr><td>Forme</td><td>Ronde</td></tr>
+                                    <tr><td>Lustre</td><td>Excellent</td></tr>
+                                    <tr><td>Origine</td><td>Mers du Sud (Australie)</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Pavage diamants</span>
+                                <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                            <div class="accordion-body">
+                                <table class="spec-table">
+                                    <tr><td>Nombre</td><td>24 diamants</td></tr>
+                                    <tr><td>Poids total</td><td>0,76 ct</td></tr>
+                                    <tr><td>Taille</td><td>Brillant</td></tr>
+                                    <tr><td>Couleur</td><td>F-G</td></tr>
+                                    <tr><td>Pureté</td><td>VS</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false">
+                                <span>Certificat &amp; garantie</span>
+                                <svg class="accordion-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                            </button>
+                            <div class="accordion-body">
+                                <table class="spec-table">
+                                    <tr><td>Certificat</td><td>Certificat d'authenticité La Joaillerie inclus</td></tr>
+                                    <tr><td>Garantie</td><td>Garantie à vie sur la monture</td></tr>
+                                    <tr><td>Entretien</td><td>Nettoyage offert à vie en boutique</td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── REVIEWS ── -->
+                <section class="reviews-section anim-section" id="reviews">
+                    <div class="reviews-header">
+                        <h2 class="section-heading">Avis clients</h2>
+                        <div class="reviews-badge">
+                            <div class="reviews-badge-stars">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="#B8965A"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <span class="reviews-score">5,0</span>
+                            </div>
+                            <span class="reviews-count">258 avis Google</span>
+                        </div>
+                    </div>
+
+                    <div class="reviews-grid">
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Ma fiancée est absolument émerveillée. La perle est d'une beauté exceptionnelle et les diamants captent la lumière de manière magique. Le service en boutique était irréprochable."</p>
+                            <div class="review-author">
+                                <span class="review-name">Marc D.</span>
+                                <span class="review-date">Il y a 2 semaines</span>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Un travail artisanal remarquable. La finition est parfaite, on sent la qualité de l'or et le sertissage des diamants est impeccable. L'écrin est magnifique également."</p>
+                            <div class="review-author">
+                                <span class="review-name">Sophie L.</span>
+                                <span class="review-date">Il y a 1 mois</span>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Je l'ai offerte pour nos 10 ans de mariage. La taille était parfaite grâce au baguier envoyé gratuitement. La gravure personnalisée ajoute une touche très émouvante."</p>
+                            <div class="review-author">
+                                <span class="review-name">Philippe R.</span>
+                                <span class="review-date">Il y a 3 mois</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="reviews-all-link">Voir les 258 avis →</a>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── CROSS-SELL ── -->
+                <section class="crosssell-section anim-section">
+                    <h2 class="section-heading">À découvrir</h2>
+                    <div class="crosssell-scroll">
+                        <div class="crosssell-card">
+                            <div class="crosssell-img-wrap">
+                                <img src="photos/aPs65rpReVYa3oxb_15.png" alt="Bague Windsor" loading="lazy">
+                            </div>
+                            <h3 class="crosssell-name">Windsor</h3>
+                            <p class="crosssell-type">Bague · Or Rose</p>
+                            <p class="crosssell-price">3 990 €</p>
+                        </div>
+                        <div class="crosssell-card">
+                            <div class="crosssell-img-wrap">
+                                <img src="photos/aPs7x7pReVYa3oyK_16.png" alt="Bague Sandringham" loading="lazy">
+                            </div>
+                            <h3 class="crosssell-name">Sandringham</h3>
+                            <p class="crosssell-type">Bague · Or Blanc</p>
+                            <p class="crosssell-price">5 290 €</p>
+                        </div>
+                        <div class="crosssell-card">
+                            <div class="crosssell-img-wrap">
+                                <img src="photos/aPs65rpReVYa3oxb_15.png" alt="Bague Kensington" loading="lazy">
+                            </div>
+                            <h3 class="crosssell-name">Kensington</h3>
+                            <p class="crosssell-type">Bague · Or Jaune</p>
+                            <p class="crosssell-price">4 190 €</p>
+                        </div>
+                        <div class="crosssell-card">
+                            <div class="crosssell-img-wrap">
+                                <img src="photos/aPs7x7pReVYa3oyK_16.png" alt="Bague Buckingham" loading="lazy">
+                            </div>
+                            <h3 class="crosssell-name">Buckingham</h3>
+                            <p class="crosssell-type">Bague · Platine</p>
+                            <p class="crosssell-price">6 490 €</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ── DIVIDER ── -->
+                <hr class="section-divider">
+
+                <!-- ── CONTACT ── -->
+                <section class="contact-section anim-section">
+                    <h2 class="section-heading">Besoin de conseils ?</h2>
+                    <p class="contact-subtitle">Notre équipe de joailliers est à votre disposition pour vous accompagner dans votre choix.</p>
+
+                    <div class="contact-grid">
+                        <a href="tel:+33983032689" class="contact-card">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <span class="contact-card-label">Téléphone</span>
+                            <span class="contact-card-value">+33 9 83 03 26 89</span>
+                        </a>
+                        <a href="mailto:contact@la-joaillerie.com" class="contact-card">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <span class="contact-card-label">Email</span>
+                            <span class="contact-card-value">contact@la-joaillerie.com</span>
+                        </a>
+                        <a href="#" class="contact-card">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                            <span class="contact-card-label">Vidéo</span>
+                            <span class="contact-card-value">Rendez-vous vidéo</span>
+                        </a>
+                        <a href="#" class="contact-card">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E393B" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span class="contact-card-label">Boutique</span>
+                            <span class="contact-card-value">30 rue Pastorelli, 06000 Nice</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- ── FOOTER ── -->
+                <footer class="footer">
+                    <div class="footer-top">
+                        <div class="footer-col">
+                            <span class="footer-logo">La Joaillerie</span>
+                            <p class="footer-tagline">Joaillerie artisanale française<br>depuis Nice, Côte d'Azur.</p>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Collections</h4>
+                            <a href="#">Bagues</a>
+                            <a href="#">Colliers</a>
+                            <a href="#">Boucles d'oreilles</a>
+                            <a href="#">Bracelets</a>
+                        </div>
+                        <div class="footer-col">
+                            <h4>Services</h4>
+                            <a href="#">Gravure personnalisée</a>
+                            <a href="#">Guide des tailles</a>
+                            <a href="#">Entretien bijoux</a>
+                            <a href="#">Rendez-vous vidéo</a>
+                        </div>
+                        <div class="footer-col">
+                            <h4>La Maison</h4>
+                            <a href="#">Notre histoire</a>
+                            <a href="#">Nos artisans</a>
+                            <a href="#">Nos engagements</a>
+                            <a href="#">Contact</a>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 La Joaillerie. Tous droits réservés.</p>
+                        <div class="footer-links">
+                            <a href="#">Mentions légales</a>
+                            <a href="#">CGV</a>
+                            <a href="#">Politique de confidentialité</a>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- Spacer to ensure enough scroll for frame playback -->
+                <div class="scroll-spacer"></div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- ═══════════════ ADDED-TO-CART TOAST ═══════════════ -->
+    <div class="toast" id="toast">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a9e6b" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <span>Ajouté au panier</span>
+    </div>
+
+    <!-- ═══════════════ CDN LIBS ═══════════════ -->
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

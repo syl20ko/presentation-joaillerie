@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stockholm &mdash; La Joaillerie | Collection</title>
+  <meta name="description" content="Collection Stockholm par La Joaillerie. Bague en or rouge 18 carats, pavage diamants 0.63 ct. Joaillerie artisanale haut de gamme, Nice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo">La Joaillerie</div>
+    <div class="loading-bar-track">
+      <div class="loading-bar-fill" id="loadingBar"></div>
+    </div>
+  </div>
+
+  <!-- Film Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">La Joaillerie</a>
+      <nav class="header-nav">
+        <a href="#collection">Collection</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#produit">Le Bijou</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <nav>
+      <a href="#collection">Collection</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#produit">Le Bijou</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <!-- ========== HERO SPLIT (V3 layout + V1 cinematic) ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-video">
+      <video autoplay muted loop playsinline id="heroVideo">
+        <source src="../../photos/Stockholm/540aaa1e395d476bb380f98c45ee4e9f.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-content-inner">
+        <span class="hero-collection-label">Collection 2026</span>
+        <h1 class="hero-title">Stockholm</h1>
+        <div class="hero-separator"></div>
+        <p class="hero-description">
+          Or rouge 18 carats<br>
+          Pavage diamants 0,63 ct<br>
+          Fabrication artisanale fran&ccedil;aise
+        </p>
+        <span class="hero-price">4&nbsp;870&nbsp;&euro;</span>
+        <a href="#collection" class="hero-cta">
+          <span>D&eacute;couvrir</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        </a>
+      </div>
+      <div class="hero-scroll-hint">
+        <div class="hero-scroll-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== INTRO — "Une lumi&egrave;re venue du Nord" (V1) ========== -->
+  <section class="section-intro" id="collection">
+    <div class="intro-layout">
+      <div class="intro-image-col">
+        <img
+          src="../../photos/Stockholm/Shooting.jpg"
+          alt="Shooting La Joaillerie &mdash; Portes d'h&ocirc;tel particulier"
+          loading="eager"
+        >
+      </div>
+      <div class="intro-text-col">
+        <div class="intro-text-inner">
+          <div class="section-label reveal">La Collection</div>
+          <h2 class="intro-title reveal delay-1">
+            Une lumi&egrave;re<br>
+            venue du Nord
+          </h2>
+          <p class="intro-text reveal delay-2">
+            Il y a dans les hivers scandinaves une clart&eacute; particuli&egrave;re. Celle qui traverse la neige, ricoche sur la glace et transforme chaque surface en &eacute;clat pur. La bague Stockholm capture cette lumi&egrave;re.
+          </p>
+          <p class="intro-text reveal delay-3">
+            Dessin&eacute;e &agrave; Nice, fa&ccedil;onn&eacute;e &agrave; la main dans notre atelier, elle porte en elle la rigueur g&eacute;om&eacute;trique du design nordique et la chaleur de l'or rouge m&eacute;diterran&eacute;en.
+          </p>
+          <div class="intro-accent-line reveal delay-4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="gold-divider" aria-hidden="true">
+    <div class="gold-divider-diamond"></div>
+  </div>
+
+  <!-- ========== STATEMENT ========== -->
+  <section class="section-statement">
+    <div class="statement-bg-text" aria-hidden="true">Stockholm</div>
+    <div class="statement-content">
+      <blockquote class="statement-quote reveal">
+        &laquo;&thinsp;Chaque diamant est pos&eacute; &agrave; la main, un &agrave; un, dans un geste qui ne tol&egrave;re ni la h&acirc;te, ni l'<span class="accent">approximation</span>&thinsp;&raquo;
+      </blockquote>
+      <p class="statement-author reveal delay-1">L'Atelier La Joaillerie</p>
+    </div>
+  </section>
+
+  <!-- ========== GALERIE MOSAIQUE (V3 architectural grid) ========== -->
+  <section class="galerie" id="galerie">
+    <div class="galerie-header">
+      <span class="section-label">L'univers</span>
+      <h2 class="section-title">L'art de <em>porter</em> la lumi&egrave;re</h2>
+    </div>
+    <div class="galerie-grid">
+      <div class="galerie-item galerie-item--tall reveal-item">
+        <img
+          src="../../photos/Stockholm/Generated%20Image%20April%2003%2C%202026%20-%2011_43PM.jpg"
+          alt="Mannequin portant la bague Stockholm dans une biblioth&egrave;que ancienne"
+          loading="lazy"
+        >
+        <div class="galerie-item-caption">
+          <span>La biblioth&egrave;que</span>
+        </div>
+      </div>
+      <div class="galerie-item galerie-item--wide reveal-item">
+        <img
+          src="../../photos/Stockholm/Generated%20Image%20April%2003%2C%202026%20-%2011_56PM.jpg"
+          alt="Mains &eacute;crivant la calligraphie devant une chemin&eacute;e, portant la bague Stockholm"
+          loading="lazy"
+        >
+        <div class="galerie-item-caption">
+          <span>La correspondance</span>
+        </div>
+      </div>
+      <div class="galerie-item galerie-item--square reveal-item">
+        <img
+          src="../../photos/Stockholm/aPtxwbpReVYa3pXe_Moscow2.png"
+          alt="Bague Stockholm vue angle &mdash; or rose et pavage diamants"
+          loading="lazy"
+        >
+        <div class="galerie-item-caption">
+          <span>Stockholm, trois-quarts</span>
+        </div>
+      </div>
+      <div class="galerie-item galerie-item--portrait reveal-item">
+        <img
+          src="../../photos/Stockholm/Generated%20Image%20April%2004%2C%202026%20-%2012_01AM.jpg"
+          alt="Bague Stockholm dans son &eacute;crin La Joaillerie devant une chemin&eacute;e en marbre"
+          loading="lazy"
+        >
+        <div class="galerie-item-caption">
+          <span>L'&eacute;crin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUIT ========== -->
+  <section class="produit" id="produit">
+    <div class="produit-header">
+      <span class="section-label">Le bijou</span>
+      <h2 class="section-title">Stockholm</h2>
+      <p class="produit-subtitle">Bague &middot; Or Rouge 18 carats &middot; Pavage diamants 0,63 ct</p>
+    </div>
+    <div class="produit-grid">
+      <div class="produit-image reveal-item">
+        <img src="../../photos/Stockholm/aPtxaLpReVYa3pW__Moscow1.png" alt="Bague Stockholm vue de face">
+        <span class="produit-image-label">Vue de face</span>
+      </div>
+      <div class="produit-image reveal-item">
+        <img src="../../photos/Stockholm/aPtxwbpReVYa3pXe_Moscow2.png" alt="Bague Stockholm vue de profil">
+        <span class="produit-image-label">Vue de profil</span>
+      </div>
+    </div>
+    <div class="produit-specs">
+      <div class="spec-item reveal-item">
+        <span class="spec-value">18K</span>
+        <span class="spec-label">Or rouge</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item reveal-item">
+        <span class="spec-value">0,63</span>
+        <span class="spec-label">Carats de diamants</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item reveal-item">
+        <span class="spec-value">Nice</span>
+        <span class="spec-label">Fabrication artisanale</span>
+      </div>
+      <div class="spec-divider"></div>
+      <div class="spec-item reveal-item">
+        <span class="spec-value">&agrave; vie</span>
+        <span class="spec-label">Garantie</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MANIFESTE ========== -->
+  <section class="manifeste" id="manifeste">
+    <div class="manifeste-ornament"></div>
+    <div class="manifeste-inner">
+      <div class="manifeste-mark">&ldquo;</div>
+      <blockquote class="manifeste-quote">
+        Chaque pi&egrave;ce est une conversation silencieuse entre la main de l'artisan et la lumi&egrave;re. Nous ne cr&eacute;ons pas des bijoux &mdash; nous &eacute;crivons des histoires en or et en pierre.
+      </blockquote>
+      <div class="manifeste-attribution">
+        <span class="manifeste-dash"></span>
+        <span class="manifeste-author">La Joaillerie, Nice</span>
+      </div>
+    </div>
+    <div class="maison-values">
+      <div class="maison-value reveal-item">
+        <div class="maison-value-number" data-count="100" data-suffix="%">0%</div>
+        <div class="maison-value-label">Fait main</div>
+      </div>
+      <div class="maison-value reveal-item">
+        <div class="maison-value-number" data-count="18" data-suffix="K">0K</div>
+        <div class="maison-value-label">Carats or</div>
+      </div>
+      <div class="maison-value reveal-item">
+        <div class="maison-value-number" data-count="63">0</div>
+        <div class="maison-value-label">Diamants pos&eacute;s</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="section-cta" id="contact">
+    <div class="cta-ornament-top"></div>
+    <p class="cta-label reveal">Rendez-vous priv&eacute;</p>
+    <h2 class="cta-title reveal delay-1">
+      D&eacute;couvrir <em>Stockholm</em><br>en boutique
+    </h2>
+    <p class="cta-address reveal delay-2">
+      La Joaillerie<br>
+      30, rue Pastorelli &mdash; 06000 Nice<br>
+      Du mardi au samedi, sur rendez-vous
+    </p>
+    <a href="tel:+33000000000" class="btn-cta reveal delay-3">Prendre Rendez-vous</a>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">La Joaillerie</span>
+        <p class="footer-tagline">Joaillerie artisanale fran&ccedil;aise<br>30 rue Pastorelli, 06000 Nice</p>
+      </div>
+      <div class="footer-right">
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <a href="#">Stockholm</a>
+          <a href="#">Balmoral</a>
+          <a href="#">Windsor</a>
+        </div>
+        <div class="footer-col">
+          <h4>La Maison</h4>
+          <a href="#">Notre histoire</a>
+          <a href="#">Savoir-faire</a>
+          <a href="#">Rendez-vous</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 La Joaillerie. Tous droits r&eacute;serv&eacute;s.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

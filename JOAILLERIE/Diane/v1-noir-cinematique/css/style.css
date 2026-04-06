@@ -1,0 +1,1036 @@
+/* ============================================================
+   DIANE — V1 Noir Cinématique
+   La Joaillerie — Édition Spéciale
+   Film noir meets haute couture. Pure cinema.
+   ============================================================ */
+
+/* --- Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@200;300;400;500&display=swap');
+
+/* --- Custom Properties --- */
+:root {
+  --bg: #0A0A0A;
+  --bg-elevated: #111111;
+  --sapphire: #1E40AF;
+  --sapphire-glow: #3B82F6;
+  --sapphire-deep: #152E7A;
+  --warm: #C4A882;
+  --warm-dim: #8B7355;
+  --text: #E8E4E0;
+  --text-dim: #6B6B6B;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --letterbox: 8vh;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow: hidden;
+  cursor: default;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Film Grain Overlay --- */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+}
+
+.film-grain svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Preloader --- */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preloader.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  letter-spacing: 1.2em;
+  text-indent: 1.2em;
+  color: var(--sapphire);
+  text-transform: uppercase;
+  animation: preloaderPulse 2s ease-in-out infinite;
+  margin-bottom: 3rem;
+}
+
+@keyframes preloaderPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.preloader.stabilized .preloader__title {
+  animation: none;
+  opacity: 1;
+}
+
+.preloader__bar-track {
+  width: 200px;
+  height: 1px;
+  background: rgba(30, 64, 175, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.preloader__bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--sapphire);
+  transition: width 0.3s ease;
+}
+
+/* --- Scroll Container --- */
+.scroll-container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Scene (base) --- */
+.scene {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Scene Number --- */
+.scene__number {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--text-dim);
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s 0.6s, transform 0.8s 0.6s;
+}
+
+.scene.in-view .scene__number {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Letterbox Bars (Cinemascope 2.39:1) --- */
+.letterbox::before,
+.letterbox::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--letterbox);
+  background: #000;
+  z-index: 5;
+}
+
+.letterbox::before { top: 0; }
+.letterbox::after { bottom: 0; }
+
+/* --- Scene Background Image --- */
+.scene__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  will-change: transform;
+}
+
+/* Ken Burns — slow scale */
+.ken-burns .scene__bg {
+  animation: kenBurns 25s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
+/* --- Vignette overlay for text readability --- */
+.scene__vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.vignette--bottom {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 35%,
+    transparent 65%
+  );
+}
+
+.vignette--full {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+.vignette--left {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 70%
+  );
+}
+
+/* ============================================================
+   SCÈNE 1 — L'OUVERTURE (HERO)
+   ============================================================ */
+.scene--hero {
+  background: #000;
+}
+
+.scene--hero .scene__bg {
+  object-position: center 20%;
+}
+
+.hero__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  max-width: 50%;
+  padding: 0 5vw calc(var(--letterbox) + 3rem);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero__tagline {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 2.6rem);
+  color: var(--text);
+  text-align: left;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+}
+
+.hero__tagline .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.scene.in-view .hero__tagline .char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__subtitle {
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s 1.5s, transform 0.8s 1.5s;
+}
+
+.scene.in-view .hero__subtitle {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeInIndicator 1s 2.5s forwards;
+}
+
+@keyframes fadeInIndicator {
+  to { opacity: 1; }
+}
+
+.scroll-indicator__line {
+  width: 1px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-indicator__line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--sapphire-glow);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0% { top: -100%; }
+  50% { top: 0%; }
+  100% { top: 100%; }
+}
+
+/* ============================================================
+   SCÈNE 2 — LE FITTING
+   ============================================================ */
+.scene--fitting {
+  background: var(--bg);
+  display: flex;
+}
+
+.fitting__image-wrap {
+  width: 60%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.fitting__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: kenBurns 25s ease-in-out infinite alternate;
+}
+
+.fitting__content {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 5vw 4rem 4vw;
+  position: relative;
+}
+
+/* Thin vertical sapphire accent line on left edge */
+.fitting__content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 30%;
+  height: 40%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--sapphire-deep),
+    var(--sapphire),
+    var(--sapphire-deep),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.scene-label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--sapphire-glow);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s 0.2s, transform 0.6s 0.2s;
+}
+
+.scene.in-view .scene-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s 0.4s, transform 0.6s 0.4s;
+}
+
+.scene.in-view .scene-title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  color: var(--warm);
+  line-height: 1.7;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s 0.6s, transform 0.6s 0.6s;
+}
+
+.scene.in-view .scene-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene-body {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin-top: 1.5rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s 0.8s, transform 0.6s 0.8s;
+}
+
+.scene.in-view .scene-body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SCÈNE 3 — LE FRONT ROW
+   ============================================================ */
+.scene--frontrow {
+  background: #000;
+}
+
+.scene--frontrow .scene__bg {
+  object-position: center 40%;
+}
+
+.frontrow__text {
+  position: absolute;
+  bottom: calc(var(--letterbox) + 3rem);
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 6;
+  padding: 0 5vw;
+}
+
+.frontrow__text p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.5vw, 3rem);
+  color: var(--text);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s 0.3s, transform 0.8s 0.3s;
+}
+
+.scene.in-view .frontrow__text p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SCÈNE 4 — LE MIROIR
+   ============================================================ */
+.scene--mirror {
+  background: #000;
+}
+
+.scene--mirror .scene__bg {
+  object-position: center center;
+}
+
+.mirror__number {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 200;
+  letter-spacing: 0.4em;
+  color: var(--warm-dim);
+  z-index: 6;
+  opacity: 0;
+  transition: opacity 1s 0.5s;
+}
+
+.scene.in-view .mirror__number {
+  opacity: 0.6;
+}
+
+/* ============================================================
+   SCÈNE 5 — LE BIJOU
+   ============================================================ */
+.scene--bijou {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 5vw;
+}
+
+.bijou__visuals {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 2rem;
+}
+
+.bijou__product-wrap {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 220px;
+  position: relative;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s 0.2s, transform 0.8s 0.2s;
+}
+
+.bijou__product-wrap:nth-child(3) {
+  transition-delay: 0.4s;
+}
+
+.scene.in-view .bijou__product-wrap {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bijou__product-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 2px;
+  /* Soft vignette mask to fade product edges into dark background */
+  -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, #000 50%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 85% at center, #000 50%, transparent 100%);
+}
+
+.bijou__video-wrap {
+  flex: 0 0 auto;
+  width: 240px;
+  height: 240px;
+  border: 1px solid var(--sapphire-deep);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s 0.3s, transform 0.8s 0.3s;
+  box-shadow: 0 0 30px rgba(30, 64, 175, 0.1);
+}
+
+.scene.in-view .bijou__video-wrap {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.bijou__video-wrap video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bijou__label {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--sapphire-glow);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.6s 0.5s;
+}
+
+.scene.in-view .bijou__label {
+  opacity: 1;
+}
+
+.bijou__name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s 0.6s, transform 0.8s 0.6s;
+}
+
+.scene.in-view .bijou__name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bijou__separator {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--sapphire), transparent);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transition: opacity 0.8s 0.65s;
+}
+
+.scene.in-view .bijou__separator {
+  opacity: 0.6;
+}
+
+.bijou__specs {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 200;
+  letter-spacing: 0.15em;
+  color: var(--warm);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s 0.7s, transform 0.8s 0.7s;
+}
+
+.scene.in-view .bijou__specs {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bijou__price {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--warm);
+  margin-top: 1rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.8s 0.8s;
+}
+
+.scene.in-view .bijou__price {
+  opacity: 1;
+}
+
+/* ============================================================
+   SCÈNE 6 — LE CALL
+   ============================================================ */
+.scene--call {
+  background: #000;
+}
+
+.scene--call .scene__bg {
+  object-position: center center;
+  /* Desaturate and darken the bright café scene to maintain noir feel */
+  filter: saturate(0.6) brightness(0.75) contrast(1.1);
+}
+
+.call__text {
+  position: absolute;
+  bottom: 3rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 6;
+  padding: 0 5vw;
+}
+
+.call__text p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  color: var(--warm);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s 0.3s, transform 0.8s 0.3s;
+}
+
+.scene.in-view .call__text p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   SCÈNE 7 — L'ARRIVÉE
+   ============================================================ */
+.scene--arrivee {
+  background: #000;
+  height: auto;
+  min-height: 100vh;
+}
+
+.scene--arrivee .scene__bg {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
+  object-position: center center;
+}
+
+.arrivee__title {
+  position: absolute;
+  bottom: 6vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 6;
+}
+
+.arrivee__title span {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 10rem);
+  font-weight: 700;
+  color: rgba(232, 228, 224, 0.85);
+  -webkit-text-stroke: 1px rgba(232, 228, 224, 0.9);
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1s 0.3s, transform 1s 0.3s;
+}
+
+.scene.in-view .arrivee__title span {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ============================================================
+   SCÈNE 8 — CODA (CTA)
+   ============================================================ */
+.scene--coda {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 5vw;
+}
+
+.coda__line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--sapphire), transparent);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transition: opacity 1s 0.1s;
+}
+
+.scene.in-view .coda__line {
+  opacity: 0.5;
+}
+
+.coda__name {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 400;
+  color: var(--sapphire);
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s 0.2s, transform 0.8s 0.2s;
+}
+
+.scene.in-view .coda__name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.coda__price {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--warm);
+  letter-spacing: 0.1em;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s 0.4s, transform 0.8s 0.4s;
+}
+
+.scene.in-view .coda__price {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.coda__cta {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 1.1rem 3rem;
+  border: 1px solid var(--sapphire);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s 0.6s, transform 0.8s 0.6s,
+              box-shadow 0.4s, border-color 0.4s, color 0.4s;
+}
+
+.scene.in-view .coda__cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.coda__cta:hover {
+  box-shadow: 0 0 25px rgba(30, 64, 175, 0.35),
+              0 0 60px rgba(30, 64, 175, 0.1);
+  border-color: var(--sapphire-glow);
+  color: #fff;
+}
+
+.coda__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(30, 64, 175, 0.1),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.coda__cta:hover::before {
+  left: 100%;
+}
+
+.coda__boutique {
+  margin-top: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity 0.8s 0.8s;
+}
+
+.scene.in-view .coda__boutique {
+  opacity: 1;
+}
+
+.coda__edition {
+  margin-top: 4rem;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity 0.8s 1s;
+}
+
+.scene.in-view .coda__edition {
+  opacity: 0.5;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --letterbox: 5vh;
+  }
+
+  /* Fitting: stack vertically */
+  .scene--fitting {
+    flex-direction: column;
+  }
+
+  .fitting__image-wrap {
+    width: 100%;
+    height: 50%;
+  }
+
+  .fitting__content {
+    width: 100%;
+    height: 50%;
+    padding: 2rem 6vw;
+    justify-content: flex-start;
+  }
+
+  .fitting__content::before {
+    display: none;
+  }
+
+  /* Bijou: stack products */
+  .bijou__visuals {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .bijou__product-wrap {
+    width: 140px;
+    height: 140px;
+  }
+
+  .bijou__video-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .scene__number {
+    bottom: 1rem;
+    right: 1.5rem;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    padding: 0 6vw calc(var(--letterbox) + 2rem);
+  }
+
+  .arrivee__title span {
+    -webkit-text-stroke: 1px rgba(232, 228, 224, 0.3);
+  }
+
+  .coda__cta {
+    padding: 1rem 2rem;
+    font-size: 0.7rem;
+  }
+
+  .frontrow__text p {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+  }
+
+  .mirror__number {
+    top: 2rem;
+    right: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bijou__visuals {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bijou__product-wrap {
+    width: 120px;
+    height: 120px;
+  }
+
+  .bijou__video-wrap {
+    width: 140px;
+    height: 140px;
+  }
+
+  .preloader__title {
+    letter-spacing: 0.6em;
+    text-indent: 0.6em;
+  }
+}
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

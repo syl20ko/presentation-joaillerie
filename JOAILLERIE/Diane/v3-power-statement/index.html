@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diane — La Joaillerie</title>
+    <meta name="description" content="Diane ne poursuit pas. Elle choisit. Bague saphir bleu, or rouge 18 ct, diamants. Édition Spéciale La Joaillerie.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Film grain overlay -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ===== 1. HERO — Le Statement ===== -->
+    <section class="hero" id="hero">
+        <div class="hero__content">
+            <h1 class="hero__title" id="heroTitle">DIANE</h1>
+            <div class="hero__line" id="heroLine"></div>
+            <p class="hero__sub" id="heroSub1">ne poursuit pas.</p>
+            <p class="hero__sub hero__sub--accent" id="heroSub2">Elle choisit.</p>
+        </div>
+        <div class="hero__scroll" id="heroScroll">
+            <span class="hero__scroll-text">Scroll</span>
+            <div class="hero__scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ===== 2. PHOTO REVEAL — Backstage ===== -->
+    <section class="photo-reveal" id="photoBackstage">
+        <div class="photo-reveal__frame reveal-photo" data-reveal="clip">
+            <img src="../Generated%20Image%20April%2004%2C%202026%20-%202_21AM.jpg"
+                 alt="Backstage — main sur le col du blazer, la bague Diane captant la lumière"
+                 loading="lazy">
+        </div>
+        <div class="photo-reveal__caption reveal-fade">
+            <span class="photo-reveal__number">01</span>
+            <span class="photo-reveal__label">Backstage</span>
+        </div>
+    </section>
+
+    <!-- ===== 3. TEXT IMMERSIF — La Phrase ===== -->
+    <section class="text-immersive" id="textImmersive">
+        <div class="text-immersive__phrase reveal-text" data-reveal="text">
+            <p>Elle touche le tissu.</p>
+        </div>
+        <div class="text-immersive__phrase reveal-text" data-reveal="text">
+            <p>Elle sait d&eacute;j&agrave;.</p>
+        </div>
+        <div class="text-immersive__phrase reveal-text" data-reveal="text">
+            <p>Comment la soir&eacute;e va finir.</p>
+        </div>
+    </section>
+
+    <!-- ===== 4. BENTO GRID — L'Univers ===== -->
+    <section class="bento" id="bento">
+        <div class="bento__grid">
+            <!-- Large tile: Fitting studio -->
+            <div class="bento__tile bento__tile--large reveal-tile">
+                <img src="../Generated%20Image%20April%2004%2C%202026%20-%202_21AM%20(1).jpg"
+                     alt="Fitting studio — main sur les tissus, la bague Diane"
+                     loading="lazy">
+            </div>
+
+            <!-- Stat tile: Sapphire -->
+            <div class="bento__tile bento__tile--stat reveal-tile">
+                <div class="bento__stat-value">0,8<span class="bento__stat-unit">ct</span></div>
+                <div class="bento__stat-label">Saphir bleu</div>
+                <div class="bento__stat-glow"></div>
+            </div>
+
+            <!-- Stat tile: Gold -->
+            <div class="bento__tile bento__tile--stat reveal-tile">
+                <div class="bento__stat-value">18<span class="bento__stat-unit">K</span></div>
+                <div class="bento__stat-label">Or rouge</div>
+                <div class="bento__stat-glow"></div>
+            </div>
+
+            <!-- Wide tile: Front row -->
+            <div class="bento__tile bento__tile--wide reveal-tile">
+                <img src="../Generated%20Image%20April%2004%2C%202026%20-%202_21AM%20(2).jpg"
+                     alt="Front row — assise, jambes croisées, la bague Diane sur le genou"
+                     loading="lazy">
+            </div>
+
+            <!-- Text tile -->
+            <div class="bento__tile bento__tile--text reveal-tile">
+                <p>Diane est un <em>statement</em>.<br>Pas un bijou.</p>
+            </div>
+
+            <!-- Square tile: Café -->
+            <div class="bento__tile bento__tile--square reveal-tile">
+                <img src="../Generated%20Image%20April%2004%2C%202026%20-%202_21AM%20(4).jpg"
+                     alt="Café — espresso sur marbre, la bague Diane sur la main"
+                     loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 5. VIDEO — La Révélation ===== -->
+    <section class="video-section" id="videoSection">
+        <div class="video-section__container" id="videoContainer">
+            <video id="dianeVideo"
+                   src="../72a8891a360d4780a37a03e3e6d4afe4.mp4"
+                   muted
+                   loop
+                   playsinline
+                   preload="metadata"
+                   poster="">
+            </video>
+        </div>
+        <div class="video-section__specs reveal-fade">
+            <span>Saphir bleu 0,8 ct</span>
+            <span class="video-section__specs-dot"></span>
+            <span>Diamants 0,36 ct</span>
+            <span class="video-section__specs-dot"></span>
+            <span>Or rouge 18K</span>
+            <span class="video-section__specs-dot"></span>
+            <span>Chevron V</span>
+        </div>
+    </section>
+
+    <!-- ===== 6. PHOTO REVEAL — Le Miroir ===== -->
+    <section class="photo-reveal photo-reveal--mirror" id="photoMirror">
+        <div class="photo-reveal__frame reveal-photo" data-reveal="clip">
+            <img src="../Generated%20Image%20April%2004%2C%202026%20-%202_21AM%20(3).jpg"
+                 alt="Le miroir — main sur le cadre, ampoules de loge, la bague Diane"
+                 loading="lazy">
+        </div>
+        <div class="photo-reveal__caption photo-reveal__caption--italic reveal-fade">
+            <p>&laquo;&nbsp;Elle ne v&eacute;rifie rien.&nbsp;&raquo;</p>
+        </div>
+    </section>
+
+    <!-- ===== 7. PRODUIT — Les Détails ===== -->
+    <section class="product" id="product">
+        <div class="product__rings">
+            <div class="product__ring reveal-fade" id="ring1">
+                <img src="../aQRpBLpReVYa33jW_Jos%C3%A9phinesaphirbleu%20(1).png"
+                     alt="Bague Diane — vue de face, saphir poire et chevron diamants"
+                     loading="lazy">
+            </div>
+            <div class="product__ring reveal-fade" id="ring2">
+                <img src="../aQRpI7pReVYa33jb_Jos%C3%A9phinesaphirbleu%202%20(1).png"
+                     alt="Bague Diane — vue de trois-quarts, saphir poire et chevron diamants"
+                     loading="lazy">
+            </div>
+        </div>
+
+        <div class="product__specs reveal-fade">
+            <table class="product__table">
+                <tbody>
+                    <tr>
+                        <td class="product__spec-name">Saphir bleu</td>
+                        <td class="product__spec-value">0,8 ct</td>
+                        <td class="product__spec-detail">Taille poire</td>
+                    </tr>
+                    <tr>
+                        <td class="product__spec-name">Diamants</td>
+                        <td class="product__spec-value">0,36 ct</td>
+                        <td class="product__spec-detail">Pavage chevron V</td>
+                    </tr>
+                    <tr>
+                        <td class="product__spec-name">Or rouge</td>
+                        <td class="product__spec-value">18 carats</td>
+                        <td class="product__spec-detail">750/1000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="product__price reveal-fade">
+            4&nbsp;170&nbsp;&euro;
+        </div>
+    </section>
+
+    <!-- ===== 8. PHOTO FINALE — L'Arrivée ===== -->
+    <section class="photo-finale" id="photoFinale">
+        <div class="photo-finale__container reveal-photo" data-reveal="scale">
+            <img src="../Generated%20Image%20April%2004%2C%202026%20-%202_21AM%20(5).jpg"
+                 alt="L'arrivée — sortie de voiture, nuit, flashs, la bague Diane"
+                 loading="lazy">
+            <div class="photo-finale__overlay">
+                <span class="photo-finale__title">DIANE</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 9. CTA ===== -->
+    <section class="cta" id="cta">
+        <div class="cta__content reveal-fade">
+            <h2 class="cta__title">Diane</h2>
+            <p class="cta__edition">&Eacute;dition Sp&eacute;ciale &mdash; La Joaillerie</p>
+            <a href="#" class="cta__button" id="ctaButton">
+                <span class="cta__button-text">D&eacute;couvrir</span>
+            </a>
+            <p class="cta__address">30, rue Pastorelli &mdash; Nice</p>
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

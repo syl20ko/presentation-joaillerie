@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Wall — Veille Publicitaire | La Joaillerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F2EAE4;
+      --text: #1E393B;
+      --text-secondary: rgba(30, 57, 59, 0.6);
+      --accent: #CB8C4D;
+      --teal: #1E393B;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ── */
+    .header {
+      text-align: center;
+      padding: 50px 24px 20px;
+    }
+
+    .header-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      transition: opacity 0.3s;
+    }
+
+    .header-back:hover { opacity: 0.7; }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      letter-spacing: 1px;
+      max-width: 500px;
+      margin: 0 auto 16px;
+    }
+
+    .header-line {
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto;
+    }
+
+    .header-count {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── Filter bar ── */
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      padding: 20px 24px 30px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(30, 57, 59, 0.2);
+      color: var(--text);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--teal);
+      color: #fff;
+      border-color: var(--teal);
+    }
+
+    /* ── Masonry Grid ── */
+    .masonry {
+      column-count: 4;
+      column-gap: 12px;
+      padding: 0 24px 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .masonry-item.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .masonry-item:hover { transform: scale(1.02); }
+
+    .masonry-item img,
+    .masonry-item video {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .masonry-item video {
+      object-fit: cover;
+    }
+
+    /* Video play indicator */
+    .video-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(30, 57, 59, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .video-indicator::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 18px;
+      border-color: transparent transparent transparent #fff;
+      margin-left: 4px;
+    }
+
+    .masonry-item:hover .video-indicator { opacity: 0; }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 57, 59, 0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .lightbox-close:hover { background: rgba(255,255,255,0.1); }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .lightbox-nav:hover { background: rgba(255,255,255,0.1); }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 40px 24px 30px;
+      background: var(--teal);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) { .masonry { column-count: 3; } }
+    @media (max-width: 768px) { .masonry { column-count: 2; column-gap: 8px; padding: 0 12px 40px; } .masonry-item { margin-bottom: 8px; } }
+    @media (max-width: 480px) { .masonry { column-count: 2; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="index.html" class="header-back">&larr; Retour aux explorations</a>
+    <h1>Social Wall</h1>
+    <p>Veille publicitaire joaillerie — 2 semaines de captures sur les r&eacute;seaux sociaux</p>
+    <div class="header-line"></div>
+    <div class="header-count">49 visuels &bull; 1 vid&eacute;o</div>
+  </header>
+
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">Tout</button>
+    <button class="filter-btn" data-filter="image">Images</button>
+    <button class="filter-btn" data-filter="video">Vid&eacute;os</button>
+  </div>
+
+  <div class="masonry" id="masonry"></div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lb-close">&times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lb-prev">&lsaquo;</button>
+    <button class="lightbox-nav lightbox-next" id="lb-next">&rsaquo;</button>
+    <img class="lightbox-content" id="lb-img" src="" alt="">
+    <video class="lightbox-content" id="lb-video" src="" controls style="display:none;"></video>
+    <div class="lightbox-counter" id="lb-counter"></div>
+  </div>
+
+  <footer class="footer">
+    <p>Sylvain Caron &mdash; D&eacute;veloppement Web et Marketing Analytique</p>
+  </footer>
+
+  <script>
+    const files = [
+      "aPuACLpReVYa3pho_Ibizableu 2.PNG",
+      "IMG_3922.PNG",
+      "IMG_3923.PNG",
+      "IMG_3924.jpg",
+      "IMG_3925.PNG",
+      "IMG_3929.jpg",
+      "IMG_3930.PNG",
+      "IMG_3933.PNG",
+      "IMG_3934.PNG",
+      "IMG_3935.PNG",
+      "IMG_3936.PNG",
+      "IMG_3937.PNG",
+      "IMG_3939.PNG",
+      "IMG_3940.PNG",
+      "IMG_3943.jpg",
+      "IMG_3945.jpg",
+      "IMG_3946.jpg",
+      "IMG_3947.jpg",
+      "IMG_3953.jpg",
+      "IMG_3954.jpg",
+      "IMG_3961.PNG",
+      "IMG_3967.jpg",
+      "IMG_3968.PNG",
+      "IMG_3969.PNG",
+      "IMG_3970.PNG",
+      "IMG_4005.jpg",
+      "IMG_4007.jpg",
+      "IMG_4009.PNG",
+      "IMG_4016.PNG",
+      "IMG_4017.PNG",
+      "IMG_4018.PNG",
+      "IMG_4025.PNG",
+      "IMG_4026.PNG",
+      "IMG_4028.PNG",
+      "IMG_4029.PNG",
+      "IMG_4036.jpg",
+      "IMG_4038.jpg",
+      "IMG_4039.jpg",
+      "IMG_4040.jpg",
+      "IMG_4041.jpg",
+      "IMG_4045.jpg",
+      "IMG_4069.jpg",
+      "IMG_4086.jpg",
+      "IMG_4090.jpg",
+      "IMG_4094.jpg",
+      "IMG_4104.jpg",
+      "IMG_4105.jpg",
+      "IMG_4111.jpg",
+      "IMG_4113.jpg",
+      "ScreenRecording_03-25-2026 22-43-56_1.MP4"
+    ];
+
+    // Shuffle for a dynamic feel
+    const shuffled = files.sort(() => Math.random() - 0.5);
+
+    const masonry = document.getElementById('masonry');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbVideo = document.getElementById('lb-video');
+    const lbCounter = document.getElementById('lb-counter');
+    let currentIndex = 0;
+    let visibleItems = [];
+
+    function isVideo(f) { return /\.(mp4|mov)$/i.test(f); }
+
+    function buildGrid(filter) {
+      masonry.innerHTML = '';
+      visibleItems = [];
+      const filtered = filter === 'all' ? shuffled
+        : filter === 'video' ? shuffled.filter(isVideo)
+        : shuffled.filter(f => !isVideo(f));
+
+      filtered.forEach((file, i) => {
+        const div = document.createElement('div');
+        div.className = 'masonry-item';
+        div.dataset.type = isVideo(file) ? 'video' : 'image';
+        div.dataset.index = i;
+
+        if (isVideo(file)) {
+          div.innerHTML = `<video src="social-wall/${encodeURIComponent(file)}" muted loop preload="metadata" onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0;"></video><div class="video-indicator"></div>`;
+        } else {
+          div.innerHTML = `<img src="social-wall/${encodeURIComponent(file)}" alt="Veille publicitaire" loading="lazy">`;
+        }
+
+        div.addEventListener('click', () => openLightbox(i, filtered));
+        masonry.appendChild(div);
+        visibleItems.push({ el: div, file });
+
+        setTimeout(() => div.classList.add('visible'), 40 * i);
+      });
+    }
+
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+        buildGrid(btn.dataset.filter);
+      });
+    });
+
+    // Lightbox
+    function openLightbox(index, list) {
+      currentIndex = index;
+      lightbox.filteredList = list;
+      showItem();
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lbVideo.pause();
+      lbVideo.style.display = 'none';
+      lbImg.style.display = '';
+    }
+
+    function showItem() {
+      const list = lightbox.filteredList;
+      const file = list[currentIndex];
+      if (isVideo(file)) {
+        lbImg.style.display = 'none';
+        lbVideo.style.display = '';
+        lbVideo.src = `social-wall/${encodeURIComponent(file)}`;
+        lbVideo.play();
+      } else {
+        lbVideo.style.display = 'none';
+        lbVideo.pause();
+        lbImg.style.display = '';
+        lbImg.src = `social-wall/${encodeURIComponent(file)}`;
+      }
+      lbCounter.textContent = `${currentIndex + 1} / ${list.length}`;
+    }
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+    document.getElementById('lb-prev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const list = lightbox.filteredList;
+      currentIndex = (currentIndex - 1 + list.length) % list.length;
+      showItem();
+    });
+
+    document.getElementById('lb-next').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const list = lightbox.filteredList;
+      currentIndex = (currentIndex + 1) % list.length;
+      showItem();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
+      if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+    });
+
+    // Init
+    buildGrid('all');
+  </script>
+
+</body>
+</html>
