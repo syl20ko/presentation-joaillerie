@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang=fr><script type=importmap>{"imports":{"1Di0y":"./studio_1k.ba5838b4.hdr","7COPs":"./clos-luce.4fbf92e0.glb"}}</script><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><title>Labo 3D — Clos Lucé — La Joaillerie Nice</title><link rel=preconnect href=https://fonts.googleapis.com><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Source+Sans+Pro:wght@300;400;600&amp;display=swap" rel=stylesheet><link rel=stylesheet href=v13-webgi.7630f838.css><body>
+
+  
+  <div id=loading-overlay>
+    <div class=loading-content>
+      <div class=loading-logo-mark>
+        <img src=logo_vert.0cb398e3.svg alt class=loading-emblem>
+      </div>
+      <div class=loading-logo-text>
+        <img src=typo_logo_vert.00326fde.svg alt="La Joaillerie" class=loading-typo>
+      </div>
+      <div class=loading-spinner></div>
+      <p id=loading-text>Chargement...</p>
+      <div class=loading-bar><div id=loading-bar-fill></div></div>
+    </div>
+  </div>
+
+  
+  <div id=webgi-canvas-container>
+    <canvas id=webgi-canvas></canvas>
+  </div>
+
+  
+  <nav id=main-nav>
+    <a href=#section-hero class=nav-link>Rendu</a>
+    <a href=#section-configurateur class=nav-link>Config</a>
+    <a href=#section-angles class=nav-link>Angles</a>
+    <a href=#section-fonds class=nav-link>Fonds</a>
+    <a href=#section-compare class=nav-link>Avant/Après</a>
+    <a href=#section-effects class=nav-link>Effets</a>
+    <a href=#section-interaction class=nav-link>Interaction</a>
+    <a href=#section-specs class=nav-link>Technique</a>
+  </nav>
+
+  
+  <section id=section-hero class="section section-hero">
+    <div class="hero-inner section-inner">
+      <img src=ornament.f8fe399c.svg alt class=hero-ornament>
+      <h1 class=hero-title>Clos Lucé</h1>
+      <p class=hero-subtitle>Solitaire — Diamant taille brillant — Or blanc 750/1000</p>
+      <span class=hero-label>Rendu diamant WebGI DiamondPlugin</span>
+    </div>
+  </section>
+
+  
+  <section id=section-configurateur class="section section-panel">
+    <div class=panel>
+      <h2 class=panel-title>Configurateur</h2>
+      <p class=panel-subtitle>Changez la couleur de la pierre et du métal en temps réel</p>
+
+      <div class=config-group>
+        <h3 class=config-label>Pierre</h3>
+        <div class=color-pills id=gem-pills>
+          <button class="active pill" data-color=#ffffff title=Blanc></button>
+          <button class=pill data-color=#a8c8ff title=Bleu></button>
+          <button class=pill data-color=#ffb0c0 title=Rose></button>
+          <button class=pill data-color=#ffee88 title=Jaune></button>
+          <button class=pill data-color=#17ebb5 title=Vert></button>
+        </div>
+      </div>
+
+      <div class=config-group>
+        <h3 class=config-label>Métal</h3>
+        <div class=color-pills id=metal-pills>
+          <button class="active pill" data-color=#d4d4d4 title="Or blanc"></button>
+          <button class=pill data-color=#e2bf7f title="Or jaune"></button>
+          <button class=pill data-color=#d28b8b title="Or rose"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id=section-angles class="section section-panel">
+    <div class=panel>
+      <h2 class=panel-title>Élévation</h2>
+      <p class=panel-subtitle>Basse = vue plongeante sur la pierre. Haute = profil anneau.</p>
+
+      <div class=btn-stack>
+        <button class=btn-angle data-angle=5>Macro dessus 5°</button>
+        <button class=btn-angle data-angle=20>Plongeante douce 20°</button>
+        <button class="active btn-angle" data-angle=35>Sweet spot 35°</button>
+        <button class=btn-angle data-angle=50>Trois-quarts 50°</button>
+        <button class=btn-angle data-angle=65>Profil haut 65°</button>
+        <button class=btn-angle data-angle=80>Profil pur 80°</button>
+        <button class=btn-angle data-angle=150>Contre-plongée 150°</button>
+      </div>
+
+      <h3 class=panel-subtitle style=color:var(--emeraude);margin-top:18px;margin-bottom:8px;font-size:.85rem>Azimut (rotation horizontale)</h3>
+      <div class=btn-stack>
+        <button class=btn-angle data-angle=face>Face 0°</button>
+        <button class=btn-angle data-angle=3/4>3/4 avant 45°</button>
+        <button class=btn-angle data-angle=profil>Profil 90°</button>
+        <button class=btn-angle data-angle=dos>Dos 180°</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id=section-fonds class="section section-panel">
+    <div class=panel>
+      <h2 class=panel-title>Arrière-plans</h2>
+      <p class=panel-subtitle>Testez différentes ambiances de fond</p>
+
+      <div class=btn-stack>
+        <button class="active btn-bg" data-bg=#F5E6E0>Rose pâle</button>
+        <button class=btn-bg data-bg=#0A0A0A>Noir</button>
+        <button class=btn-bg data-bg=#FFFFFF>Blanc</button>
+        <button class=btn-bg data-bg=#1E393B>Émeraude</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id=section-compare class="section section-panel">
+    <div class=panel>
+      <h2 class=panel-title>Avant / Après</h2>
+      <p class=panel-subtitle>Comparez le rendu DiamondPlugin au PBR standard</p>
+
+      <div class=btn-stack>
+        <button class="active btn-compare" data-mode=diamond>DiamondPlugin ON</button>
+        <button class=btn-compare data-mode=standard>Standard PBR</button>
+      </div>
+      <p id=compare-note class=compare-note>Le DiamondPlugin simule la réfraction et la dispersion d’un vrai diamant, impossible avec un shader PBR classique.</p>
+    </div>
+  </section>
+
+  
+  <section id=section-effects class="section section-panel">
+    <div class=panel>
+      <h2 class=panel-title>Effets de rendu</h2>
+      <p class=panel-subtitle>Chaque couche ajoute du réalisme. Désactivez pour voir la différence.</p>
+
+      <div class=btn-stack>
+        <button class="active btn-toggle" data-effect=bloom>Bloom (halo lumineux)</button>
+        <button class="active btn-toggle" data-effect=ssr>SSR (reflets écran)</button>
+        <button class="active btn-toggle" data-effect=ssao>SSAO (ombres douces)</button>
+        <button class="active btn-toggle" data-effect=ground>Ombre au sol</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id=section-interaction class="section section-panel">
+    <div class=panel>
+      <h2 class=panel-title>Interaction</h2>
+      <p class=panel-subtitle>Contrôlez la rotation et le zoom du bijou</p>
+
+      <div class=config-group>
+        <h3 class=config-label>Auto-rotation</h3>
+        <div class=btn-stack-row>
+          <button class="active btn-toggle" data-effect=autorotate>ON</button>
+        </div>
+        <label class=slider-label>Vitesse
+          <input type=range id=speed-slider min=0.1 max=3 step=0.1 value=0.5 class=slider>
+        </label>
+      </div>
+
+      <div class=config-group>
+        <h3 class=config-label>Distance caméra</h3>
+        <label class=slider-label>Zoom
+          <input type=range id=zoom-slider min=3 max=20 step=0.5 value=8 class=slider>
+        </label>
+      </div>
+
+      <div class=config-group style=margin-top:16px>
+        <button class=btn-capture id=btn-capture>Capturer PNG</button>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id=section-specs class="section section-specs">
+    <div class="panel panel-specs">
+      <h2 class=panel-title>Fiche technique</h2>
+      <div class=specs-grid>
+        <div class=spec-item>
+          <span class=spec-key>Modèle</span>
+          <span class=spec-val>Clos Lucé — Solitaire</span>
+        </div>
+        <div class=spec-item>
+          <span class=spec-key>Environnement</span>
+          <span class=spec-val>Studio HDRI 1K</span>
+        </div>
+        <div class=spec-item>
+          <span class=spec-key>Moteur</span>
+          <span class=spec-val>WebGI SDK 0.4.6</span>
+        </div>
+        <div class=spec-item>
+          <span class=spec-key>Plugin</span>
+          <span class=spec-val>DiamondPlugin (réfraction)</span>
+        </div>
+        <div class=spec-item>
+          <span class=spec-key>Origine</span>
+          <span class=spec-val>Export Blender → GLB</span>
+        </div>
+        <div class=spec-item id=spec-total>
+          <span class=spec-key>Poids</span>
+          <span class=spec-val>~4.2 Mo (GLB + HDRI)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type=module src=v13-webgi.12416bfc.js></script>
+
+
