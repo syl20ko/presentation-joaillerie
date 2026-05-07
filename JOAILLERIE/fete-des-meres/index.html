@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection Celeste — Fete des Meres 2026 — La Joaillerie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #F2EAE4;
+      --bg-card: #FFFFFF;
+      --bg-rose: #F5DED8;
+      --text: #1E393B;
+      --text-secondary: rgba(30, 57, 59, 0.6);
+      --accent: #CB8C4D;
+      --border: rgba(30, 57, 59, 0.12);
+      --border-section: rgba(30, 57, 59, 0.15);
+      --muted: rgba(30, 57, 59, 0.5);
+      --teal: #1E393B;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+    }
+
+    .hero-back {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .hero-back:hover { color: var(--accent); }
+
+    .hero-back-arrow {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .hero-back:hover .hero-back-arrow { transform: translateX(-4px); }
+
+    .hero-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-date {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    .hero-line {
+      width: 100px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 30px;
+      background: linear-gradient(to bottom, var(--accent), rgba(203, 140, 77, 0));
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border-section);
+    }
+
+    .section-count {
+      font-size: 12px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── Gallery ── */
+    .gallery-group {
+      margin-bottom: 48px;
+    }
+
+    .gallery-group:last-child { margin-bottom: 0; }
+
+    .gallery-group-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .gallery-group-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(30, 57, 59, 0.08), 0 4px 12px rgba(203, 140, 77, 0.06);
+    }
+
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-item-label {
+      padding: 10px 14px;
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 0.5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gallery-item-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      color: var(--accent);
+      font-weight: 400;
+      white-space: nowrap;
+      margin-left: 8px;
+    }
+
+    /* ── Brief Shooting ── */
+    .brief {
+      background: var(--bg-card);
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brief-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .brief h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .brief-intro {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .brief-priority {
+      margin-bottom: 32px;
+    }
+
+    .brief-priority:last-child { margin-bottom: 0; }
+
+    .brief-priority-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .brief-priority-number {
+      background: var(--teal);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .brief-priority-number.bonus {
+      background: var(--border);
+      color: var(--text-secondary);
+    }
+
+    .brief-priority-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    .brief-priority-time {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+    .brief-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .brief-table th {
+      text-align: left;
+      font-weight: 500;
+      color: var(--text);
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .brief-table td {
+      padding: 8px 12px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(30, 57, 59, 0.06);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+
+    .brief-table td strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .brief-table td .nb {
+      font-family: 'Playfair Display', serif;
+      color: var(--accent);
+      font-size: 15px;
+    }
+
+    .brief-tip {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      padding: 12px 16px;
+      background: rgba(203, 140, 77, 0.06);
+      border-radius: 4px;
+      margin-top: 8px;
+    }
+
+    .brief-checklist {
+      list-style: none;
+      padding: 0;
+      columns: 2;
+      column-gap: 24px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 2;
+    }
+
+    .brief-checklist li::before {
+      content: "\2610\00a0";
+      color: var(--accent);
+    }
+
+    .brief-separator {
+      width: 60px;
+      height: 1px;
+      background: var(--accent);
+      margin: 28px 0;
+    }
+
+    .brief-total {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: var(--teal);
+      border-radius: 4px;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      margin-top: 28px;
+    }
+
+    .brief-total strong {
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    @media (max-width: 600px) {
+      .brief { padding: 24px 18px; }
+      .brief-checklist { columns: 1; }
+      .brief-total { flex-direction: column; gap: 12px; text-align: center; }
+      .brief-priority-time { display: none; }
+    }
+
+    /* ── Pricing ── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .pricing-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 40px rgba(30, 57, 59, 0.08), 0 4px 12px rgba(203, 140, 77, 0.06);
+    }
+
+    .pricing-card-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, transparent 50%, rgba(203,140,77,0.06) 50%);
+      pointer-events: none;
+    }
+
+    .pricing-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .pricing-card-material {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .pricing-card-line {
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .pricing-card-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card-variants {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .pricing-card-badge {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 9px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── Timeline ── */
+    .timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      padding: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-width: 140px;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .timeline-dot.active {
+      box-shadow: 0 0 0 4px rgba(203, 140, 77, 0.2);
+    }
+
+    .timeline-dot.future {
+      background: var(--border);
+    }
+
+    .timeline-label {
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+
+    .timeline-date {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    .timeline-connector {
+      width: 60px;
+      height: 1px;
+      background: var(--border-section);
+      margin-bottom: 28px;
+    }
+
+    .timeline-connector.done {
+      background: var(--accent);
+    }
+
+    /* ── Hirondelle Story ── */
+    .story-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 40px;
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .story-block-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, transparent 50%, rgba(203,140,77,0.04) 50%);
+      pointer-events: none;
+    }
+
+    .story-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .story-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .story-line {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .story-text {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    .story-text strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .story-text em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    /* ── Lightbox ── */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 57, 59, 0.92);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 40px;
+    }
+
+    .lightbox-overlay.active {
+      display: flex;
+    }
+
+    .lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      cursor: default;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 24px;
+      right: 28px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    .lightbox-close:hover { color: #fff; }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 36px;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s ease;
+      background: none;
+      border: none;
+      padding: 12px;
+    }
+
+    .lightbox-nav:hover { color: #fff; }
+    .lightbox-prev { left: 16px; }
+    .lightbox-next { right: 16px; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 60px 24px 40px;
+      background: var(--teal);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 40px;
+    }
+
+    .footer-line {
+      width: 60px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 auto 20px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline { gap: 0; }
+      .timeline-connector { width: 40px; }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .hero-logo { font-size: 32px; }
+      .section-title { font-size: 22px; }
+      .hero-back { top: 16px; left: 16px; }
+      .story-block { padding: 28px 20px; }
+      .timeline { flex-direction: column; gap: 0; }
+      .timeline-connector { width: 1px; height: 30px; margin-bottom: 0; margin-top: 0; }
+      .timeline-step { min-width: auto; }
+      .gallery-item img { height: 240px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════ HERO ════ -->
+  <header class="hero">
+    <a href="../../index.html" class="hero-back">
+      <span class="hero-back-arrow">&larr;</span>
+      <span>Retour</span>
+    </a>
+    <h1 class="hero-logo">Collection C&eacute;leste</h1>
+    <p class="hero-subtitle">F&ecirc;te des M&egrave;res 2026</p>
+    <p class="hero-date">La Joaillerie &mdash; Florian Music</p>
+    <div class="hero-line"></div>
+    <div class="hero-scroll">
+      <span>D&eacute;couvrir</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ════ BRIEF SHOOTING ════ -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Brief Shooting</h2>
+      <div class="section-line"></div>
+      <span class="section-count">Dimanche 11 mai</span>
+    </div>
+
+    <div class="brief">
+      <span class="brief-badge">Action Florence</span>
+      <h3>Photos &agrave; faire pour le site</h3>
+      <p class="brief-intro">
+        Pour mettre la collection en ligne avant le 15 mai, il nous faut des photos pr&eacute;cises.
+        Voici exactement quoi photographier, comment, et dans quel ordre de priorit&eacute;.
+      </p>
+
+      <!-- P1 -->
+      <div class="brief-priority">
+        <div class="brief-priority-header">
+          <div class="brief-priority-number">1</div>
+          <div class="brief-priority-title">Photos produit sur fond blanc</div>
+          <div class="brief-priority-time">16 photos</div>
+        </div>
+        <p class="brief-intro" style="margin-bottom:12px">
+          <strong>C'est ce qui bloque la mise en ligne.</strong> Le site affiche une photo par fiche produit : le bijou seul, sur fond blanc, en format horizontal. Il en faut une par pi&egrave;ce et par couleur d'or.
+        </p>
+        <table class="brief-table">
+          <thead>
+            <tr><th>Pi&egrave;ce</th><th>Couleurs &agrave; photographier</th><th>Nb</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Collier C&eacute;leste 7 motifs</strong></td><td>Or jaune, or blanc, or rouge</td><td class="nb">3</td></tr>
+            <tr><td><strong>Collier C&eacute;leste 3 motifs</strong></td><td>Or jaune, or blanc, or rouge</td><td class="nb">3</td></tr>
+            <tr><td><strong>Pendentif Hirondelle + cha&icirc;ne</strong></td><td>Or jaune, or blanc, or rouge</td><td class="nb">3</td></tr>
+            <tr><td><strong>Bague C&eacute;leste Grand Mod&egrave;le</strong></td><td>1 seule (argent + or)</td><td class="nb">1</td></tr>
+            <tr><td><strong>Bague C&eacute;leste Petit Mod&egrave;le</strong></td><td>1 seule (argent + or)</td><td class="nb">1</td></tr>
+            <tr><td><strong>Bracelet Manchette C&eacute;leste</strong></td><td>1 seule (argent + or)</td><td class="nb">1</td></tr>
+            <tr><td><strong>Bracelet Hirondelle</strong></td><td>Or jaune, or blanc, or rouge</td><td class="nb">3</td></tr>
+            <tr><td><strong>Bracelet Perle de Culture</strong></td><td>1 seule</td><td class="nb">1</td></tr>
+          </tbody>
+        </table>
+        <div class="brief-tip">
+          <strong>Comment faire :</strong> fond blanc ou gris tr&egrave;s clair &bull; bijou seul au centre, bien &eacute;clair&eacute; &bull; pas de main, pas de pr&eacute;sentoir, pas de bo&icirc;te &bull; photo horizontale &bull; cadrer large (on recadre apr&egrave;s si besoin)
+        </div>
+      </div>
+
+      <div class="brief-separator"></div>
+
+      <!-- P2 -->
+      <div class="brief-priority">
+        <div class="brief-priority-header">
+          <div class="brief-priority-number">2</div>
+          <div class="brief-priority-title">Photos port&eacute;es</div>
+          <div class="brief-priority-time">4 photos</div>
+        </div>
+        <p class="brief-intro" style="margin-bottom:12px">
+          Le site n'a quasiment aucune photo port&eacute;e aujourd'hui. M&ecirc;me 4 photos suffiront pour faire toute la diff&eacute;rence sur les pubs et les r&eacute;seaux. C'est ce qui transforme un catalogue en envie.
+        </p>
+        <table class="brief-table">
+          <thead>
+            <tr><th>Pi&egrave;ce</th><th>O&ugrave; le porter</th><th>Pourquoi</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Collier 7 motifs</strong> (or jaune ou blanc)</td><td>Sur un cou</td><td>Photo principale de la campagne</td></tr>
+            <tr><td><strong>Bracelet Hirondelle</strong></td><td>Sur un poignet</td><td>Pi&egrave;ce d'entr&eacute;e &agrave; 480&euro;</td></tr>
+            <tr><td><strong>Bague C&eacute;leste Grand Mod&egrave;le</strong></td><td>Sur une main</td><td>Pi&egrave;ce signature</td></tr>
+            <tr><td><strong>Pendentif Hirondelle</strong></td><td>Sur un cou / d&eacute;collet&eacute;</td><td>Le cadeau F&ecirc;te des M&egrave;res</td></tr>
+          </tbody>
+        </table>
+        <div class="brief-tip">
+          <strong>Comment faire :</strong> lumi&egrave;re naturelle (pr&egrave;s d'une fen&ecirc;tre) &bull; pas d'autre bijou visible, ongles soign&eacute;s &bull; cadrage serr&eacute; sur le bijou, pas besoin du visage &bull; faire 2-3 prises par pi&egrave;ce pour avoir du choix
+        </div>
+      </div>
+
+      <div class="brief-separator"></div>
+
+      <!-- P3 -->
+      <div class="brief-priority">
+        <div class="brief-priority-header">
+          <div class="brief-priority-number bonus">3</div>
+          <div class="brief-priority-title">Bonus si le temps le permet</div>
+          <div class="brief-priority-time">3-5 photos</div>
+        </div>
+        <table class="brief-table">
+          <thead>
+            <tr><th>Quoi</th><th>Pourquoi</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Gros plan sur le motif hirondelle en or</td><td>Instagram et storytelling</td></tr>
+            <tr><td>3-4 pi&egrave;ces ensemble sur un tissu neutre</td><td>Image &laquo; collection &raquo;</td></tr>
+            <tr><td>Bo&icirc;te ouverte avec bijou, table en bois</td><td>Ambiance &laquo; offrir &raquo; pour les pubs</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TOTAL -->
+      <div class="brief-total">
+        <div>Total &agrave; pr&eacute;voir&ensp;<strong>23 &agrave; 25 photos</strong></div>
+      </div>
+
+      <div class="brief-separator"></div>
+
+      <!-- CHECKLIST -->
+      <h3>Pi&egrave;ces &agrave; pr&eacute;parer pour dimanche</h3>
+      <p class="brief-intro">V&eacute;rifier que tout est disponible en boutique avant le shooting :</p>
+      <ul class="brief-checklist">
+        <li>Collier C&eacute;leste 7 motifs &mdash; or jaune</li>
+        <li>Collier C&eacute;leste 7 motifs &mdash; or blanc</li>
+        <li>Collier C&eacute;leste 7 motifs &mdash; or rouge</li>
+        <li>Collier C&eacute;leste 3 motifs &mdash; or jaune</li>
+        <li>Collier C&eacute;leste 3 motifs &mdash; or blanc</li>
+        <li>Collier C&eacute;leste 3 motifs &mdash; or rouge</li>
+        <li>Pendentif Hirondelle &mdash; or jaune</li>
+        <li>Pendentif Hirondelle &mdash; or blanc</li>
+        <li>Pendentif Hirondelle &mdash; or rouge</li>
+        <li>Bague C&eacute;leste Grand Mod&egrave;le</li>
+        <li>Bague C&eacute;leste Petit Mod&egrave;le</li>
+        <li>Bracelet Manchette C&eacute;leste</li>
+        <li>Bracelet Hirondelle &mdash; or jaune</li>
+        <li>Bracelet Hirondelle &mdash; or blanc</li>
+        <li>Bracelet Hirondelle &mdash; or rouge</li>
+        <li>Bracelet Perle de Culture Blanche</li>
+        <li>Quelqu'un pour porter les bijoux (Florence ?)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ════ GALERIE — COLLIERS ════ -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Galerie Photos</h2>
+      <div class="section-line"></div>
+      <span class="section-count">17 photos &mdash; 4 cat&eacute;gories</span>
+    </div>
+
+    <div class="gallery-group">
+      <h3 class="gallery-group-title">Colliers</h3>
+      <div class="gallery-group-line"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-index="0" onclick="openLightbox(0)">
+          <img src="photos/collier-celeste-or-jaune-7motifs-01.jpg" alt="Collier Celeste or jaune 7 motifs" loading="lazy">
+          <div class="gallery-item-label"><span>Collier C&eacute;leste &mdash; Or jaune 7 motifs</span><span class="gallery-item-price">950&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="1" onclick="openLightbox(1)">
+          <img src="photos/collier-celeste-or-jaune-7motifs-02.jpg" alt="Collier Celeste or jaune 7 motifs vue 2" loading="lazy">
+          <div class="gallery-item-label"><span>Collier C&eacute;leste &mdash; Or jaune, vue rapproch&eacute;e</span><span class="gallery-item-price">950&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="2" onclick="openLightbox(2)">
+          <img src="photos/collier-celeste-or-jaune-7motifs-03.jpg" alt="Collier Celeste or jaune 7 motifs vue 3" loading="lazy">
+          <div class="gallery-item-label"><span>Collier C&eacute;leste &mdash; Or jaune, d&eacute;tail motifs</span><span class="gallery-item-price">950&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="3" onclick="openLightbox(3)">
+          <img src="photos/collier-celeste-or-blanc-7motifs-01.jpg" alt="Collier Celeste or blanc 7 motifs" loading="lazy">
+          <div class="gallery-item-label"><span>Collier C&eacute;leste &mdash; Or blanc 7 motifs</span><span class="gallery-item-price">950&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="4" onclick="openLightbox(4)">
+          <img src="photos/collier-celeste-or-blanc-7motifs-02.jpg" alt="Collier Celeste or blanc 7 motifs vue 2" loading="lazy">
+          <div class="gallery-item-label"><span>Collier C&eacute;leste &mdash; Or blanc, vue rapproch&eacute;e</span><span class="gallery-item-price">950&euro;</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BAGUES -->
+    <div class="gallery-group">
+      <h3 class="gallery-group-title">Bagues</h3>
+      <div class="gallery-group-line"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-index="5" onclick="openLightbox(5)">
+          <img src="photos/bague-celeste-grand-modele-ecrin.jpg" alt="Bague Celeste grand modele en ecrin" loading="lazy">
+          <div class="gallery-item-label"><span>Bague C&eacute;leste Grand Mod&egrave;le &mdash; &Eacute;crin</span><span class="gallery-item-price">1 180&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="6" onclick="openLightbox(6)">
+          <img src="photos/bagues-coeur-or-jaune-blanc-01.jpg" alt="Bagues coeur or jaune et blanc" loading="lazy">
+          <div class="gallery-item-label"><span>Bagues Coeur &mdash; Or jaune &amp; blanc</span></div>
+        </div>
+        <div class="gallery-item" data-index="7" onclick="openLightbox(7)">
+          <img src="photos/bagues-coeur-or-jaune-blanc-02.jpg" alt="Bagues coeur or jaune et blanc vue 2" loading="lazy">
+          <div class="gallery-item-label"><span>Bagues Coeur &mdash; Vue rapproch&eacute;e</span></div>
+        </div>
+        <div class="gallery-item" data-index="8" onclick="openLightbox(8)">
+          <img src="photos/bague-presentoir-01.jpg" alt="Bague sur presentoir" loading="lazy">
+          <div class="gallery-item-label"><span>Bague &mdash; Pr&eacute;sentoir</span></div>
+        </div>
+        <div class="gallery-item" data-index="9" onclick="openLightbox(9)">
+          <img src="photos/bague-presentoir-02.jpg" alt="Bague sur presentoir vue 2" loading="lazy">
+          <div class="gallery-item-label"><span>Bague &mdash; Pr&eacute;sentoir vue 2</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRACELETS -->
+    <div class="gallery-group">
+      <h3 class="gallery-group-title">Bracelets</h3>
+      <div class="gallery-group-line"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-index="10" onclick="openLightbox(10)">
+          <img src="photos/bracelet-hirondelle-or-rose.jpg" alt="Bracelet Hirondelle or rose" loading="lazy">
+          <div class="gallery-item-label"><span>Bracelet Hirondelle &mdash; Or rose</span><span class="gallery-item-price">480&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="11" onclick="openLightbox(11)">
+          <img src="photos/bracelet-perle-culture-blanche.jpg" alt="Bracelet perle de culture blanche" loading="lazy">
+          <div class="gallery-item-label"><span>Bracelet Perle de Culture &mdash; Blanche</span><span class="gallery-item-price">680&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="12" onclick="openLightbox(12)">
+          <img src="photos/bracelet-perle-culture-2modeles.jpg" alt="Bracelets perle de culture deux modeles" loading="lazy">
+          <div class="gallery-item-label"><span>Bracelets Perle de Culture &mdash; Deux mod&egrave;les</span><span class="gallery-item-price">680&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="13" onclick="openLightbox(13)">
+          <img src="photos/bracelet-manchette-celeste-photo.jpg" alt="Bracelet Manchette Celeste" loading="lazy">
+          <div class="gallery-item-label"><span>Bracelet Manchette C&eacute;leste</span><span class="gallery-item-price">1 580&euro;</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DETAILS & AMBIANCE -->
+    <div class="gallery-group">
+      <h3 class="gallery-group-title">D&eacute;tails &amp; Ambiance</h3>
+      <div class="gallery-group-line"></div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-index="14" onclick="openLightbox(14)">
+          <img src="photos/pendentif-hirondelle-3couleurs.jpg" alt="Pendentif Hirondelle trois couleurs" loading="lazy">
+          <div class="gallery-item-label"><span>Pendentif Hirondelle &mdash; 3 couleurs d'or</span><span class="gallery-item-price">580&euro;</span></div>
+        </div>
+        <div class="gallery-item" data-index="15" onclick="openLightbox(15)">
+          <img src="photos/motifs-hirondelle-or-jaune.jpg" alt="Motifs hirondelle or jaune" loading="lazy">
+          <div class="gallery-item-label"><span>Motifs Hirondelle &mdash; Or jaune</span></div>
+        </div>
+        <div class="gallery-item" data-index="16" onclick="openLightbox(16)">
+          <img src="photos/vitrine-fete-des-meres-deco.jpg" alt="Vitrine fete des meres decoration" loading="lazy">
+          <div class="gallery-item-label"><span>Vitrine F&ecirc;te des M&egrave;res &mdash; D&eacute;coration</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ TARIFS ════ -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Tarifs Collection</h2>
+      <div class="section-line"></div>
+      <span class="section-count">9 pi&egrave;ces</span>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-name">Collier C&eacute;leste 7 motifs</div>
+        <div class="pricing-card-material">Or 18 carats</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">950&euro;</div>
+        <div class="pricing-card-variants">Or blanc, jaune, rouge</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-name">Collier C&eacute;leste 3 motifs</div>
+        <div class="pricing-card-material">Or 18 carats</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">700&euro;</div>
+        <div class="pricing-card-variants">Or blanc, jaune, rouge</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-name">Pendentif Hirondelle + cha&icirc;ne</div>
+        <div class="pricing-card-material">Or 18 carats</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">580&euro;</div>
+        <div class="pricing-card-variants">Or blanc, jaune, rouge</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-badge">EXCLUSIF</div>
+        <div class="pricing-card-name">Bague C&eacute;leste Grand Mod&egrave;le</div>
+        <div class="pricing-card-material">Argent massif + or 18ct + diamants</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">1 180&euro;</div>
+        <div class="pricing-card-variants">&mdash;</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-badge">EXCLUSIF</div>
+        <div class="pricing-card-name">Bague C&eacute;leste Petit Mod&egrave;le</div>
+        <div class="pricing-card-material">Argent massif + or 18ct + diamants</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">980&euro;</div>
+        <div class="pricing-card-variants">&mdash;</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-badge">EXCLUSIF</div>
+        <div class="pricing-card-name">Bracelet Manchette C&eacute;leste</div>
+        <div class="pricing-card-material">Argent massif + or 18ct</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">1 580&euro;</div>
+        <div class="pricing-card-variants">&mdash;</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-name">Bracelet Perle de Culture</div>
+        <div class="pricing-card-material">Perle blanche + or 18ct</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">680&euro;</div>
+        <div class="pricing-card-variants">&mdash;</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-name">Bracelet Hirondelle</div>
+        <div class="pricing-card-material">Or 18 carats</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">480&euro;</div>
+        <div class="pricing-card-variants">Or blanc, jaune, rouge</div>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-card-corner"></div>
+        <div class="pricing-card-badge">&Agrave; VENIR</div>
+        <div class="pricing-card-name">Boucles d'Oreilles</div>
+        <div class="pricing-card-material">Or 18 carats</div>
+        <div class="pricing-card-line"></div>
+        <div class="pricing-card-price">850&euro;<span style="font-size: 14px; color: var(--muted); font-family: 'Inter', sans-serif; font-weight: 300;">/paire</span></div>
+        <div class="pricing-card-variants">Or blanc, jaune, rouge</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════ TIMELINE ════ -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Calendrier</h2>
+      <div class="section-line"></div>
+      <span class="section-count">Planning lancement</span>
+    </div>
+    <div class="timeline">
+      <div class="timeline-step">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-label">Shooting</div>
+        <div class="timeline-date">11 mai</div>
+      </div>
+      <div class="timeline-connector done"></div>
+      <div class="timeline-step">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-label">Photos livr&eacute;es</div>
+        <div class="timeline-date">12 mai</div>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-step">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-label">Mise en ligne</div>
+        <div class="timeline-date">&lt; 15 mai</div>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-step">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-label">Campagnes</div>
+        <div class="timeline-date">Google Ads + Social</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ HIRONDELLE STORY ════ -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">L'Hirondelle</h2>
+      <div class="section-line"></div>
+      <span class="section-count">Le symbole</span>
+    </div>
+    <div class="story-block">
+      <div class="story-block-corner"></div>
+      <div class="story-icon">&#x1F54A;&#xFE0F;</div>
+      <h3 class="story-title">Le Poin&ccedil;on de Ma&icirc;tre</h3>
+      <div class="story-line"></div>
+      <p class="story-text">
+        L'hirondelle est le <strong>poin&ccedil;on de Ma&icirc;tre</strong> de Florian Music, signature unique de l'artisan joaillier.
+        Cette hirondelle a &eacute;t&eacute; <em>offerte &agrave; Florence</em>, sa compagne, et est depuis devenue le symbole de la Maison.
+        On la retrouve d&eacute;clin&eacute;e en pendentif, en motif de bracelet et en d&eacute;tail orn&eacute; sur les pi&egrave;ces de la Collection C&eacute;leste.
+        Plus qu'un bijou, c'est une histoire d'amour grav&eacute;e dans l'or.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════ FOOTER ════ -->
+  <footer class="footer">
+    <div class="footer-line"></div>
+    <p>Sylvain Caron &mdash; D&eacute;veloppement Web et Marketing Analytique</p>
+  </footer>
+
+  <!-- ════ LIGHTBOX ════ -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(event, -1)">&#8249;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(event, 1)">&#8250;</button>
+  </div>
+
+  <script>
+    // Gallery images for lightbox
+    const galleryImages = [
+      'photos/collier-celeste-or-jaune-7motifs-01.jpg',
+      'photos/collier-celeste-or-jaune-7motifs-02.jpg',
+      'photos/collier-celeste-or-jaune-7motifs-03.jpg',
+      'photos/collier-celeste-or-blanc-7motifs-01.jpg',
+      'photos/collier-celeste-or-blanc-7motifs-02.jpg',
+      'photos/bague-celeste-grand-modele-ecrin.jpg',
+      'photos/bagues-coeur-or-jaune-blanc-01.jpg',
+      'photos/bagues-coeur-or-jaune-blanc-02.jpg',
+      'photos/bague-presentoir-01.jpg',
+      'photos/bague-presentoir-02.jpg',
+      'photos/bracelet-hirondelle-or-rose.jpg',
+      'photos/bracelet-perle-culture-blanche.jpg',
+      'photos/bracelet-perle-culture-2modeles.jpg',
+      'photos/bracelet-manchette-celeste-photo.jpg',
+      'photos/pendentif-hirondelle-3couleurs.jpg',
+      'photos/motifs-hirondelle-or-jaune.jpg',
+      'photos/vitrine-fete-des-meres-deco.jpg'
+    ];
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      const overlay = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = galleryImages[index];
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e.target.classList.contains('lightbox-overlay') || e.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function navigateLightbox(e, direction) {
+      e.stopPropagation();
+      currentIndex = (currentIndex + direction + galleryImages.length) % galleryImages.length;
+      document.getElementById('lightbox-img').src = galleryImages[currentIndex];
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      const overlay = document.getElementById('lightbox');
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowLeft') {
+        navigateLightbox(e, -1);
+      } else if (e.key === 'ArrowRight') {
+        navigateLightbox(e, 1);
+      }
+    });
+
+    // Scroll reveal for pricing cards
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const section = card.closest('.section');
+          const cards = Array.from(section.querySelectorAll('.pricing-card'));
+          const index = cards.indexOf(card);
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 80);
+          observer.unobserve(card);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pricing-card').forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
