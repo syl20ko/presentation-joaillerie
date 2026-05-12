@@ -622,6 +622,116 @@
       color: var(--accent);
     }
 
+    /* ── Mapping Produit/Photos ── */
+    .mapping-product {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .mapping-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .mapping-status {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .mapping-ok { background: #2d6a4f; color: #fff; }
+    .mapping-partial { background: #e69500; color: #fff; }
+    .mapping-missing { background: #c1121f; color: #fff; }
+
+    .mapping-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .mapping-meta {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .mapping-grid.mapping-empty {
+      display: block;
+      background: rgba(193, 18, 31, 0.04);
+      border: 1px dashed rgba(193, 18, 31, 0.2);
+      border-radius: 4px;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .mapping-thumb {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .mapping-thumb:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .mapping-thumb img {
+      display: block;
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .mapping-thumb span {
+      display: block;
+      padding: 6px 10px;
+      font-size: 10px;
+      color: var(--text-secondary);
+      letter-spacing: 0.3px;
+      background: var(--bg);
+    }
+
+    .mapping-note {
+      font-size: 12px;
+      color: var(--text-secondary);
+      padding: 8px 12px;
+      background: rgba(30, 57, 59, 0.03);
+      border-radius: 3px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .mapping-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .mapping-grid { grid-template-columns: repeat(2, 1fr); }
+      .mapping-thumb img { height: 120px; }
+      .mapping-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
     /* ── Lightbox ── */
     .lightbox-overlay {
       position: fixed;
@@ -865,6 +975,228 @@
         <li>Bracelet Perle de Culture Blanche</li>
         <li>Quelqu'un pour porter les bijoux (Florence ?)</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ════ MAPPING SHOOTING 11 MAI ════ -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Shooting 11 mai &mdash; Mapping Produit / Photos</h2>
+      <div class="section-line"></div>
+      <span class="section-count">9 produits &times; 39 photos</span>
+    </div>
+
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:32px;line-height:1.7;">
+      Bilan concret : pour chaque produit du catalogue, quelles photos du shooting sont exploitables.
+      <strong style="color:var(--text)">Cliquer sur une photo pour l'agrandir.</strong>
+    </p>
+
+    <!-- ── 1. Collier Céleste 7 motifs ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-ok">OK</div>
+        <div>
+          <div class="mapping-name">Collier C&eacute;leste 7 motifs</div>
+          <div class="mapping-meta">950&euro; &bull; Or blanc, or jaune, or rouge</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_038.jpg" loading="lazy"><span>038 &mdash; Buste or jaune</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_037.jpg" loading="lazy"><span>037 &mdash; Buste or blanc</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_004.jpg" loading="lazy"><span>004 &mdash; Port&eacute; or jaune</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_006.jpg" loading="lazy"><span>006 &mdash; Port&eacute; or blanc (crop)</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_012.jpg" loading="lazy"><span>012 &mdash; Port&eacute; tenu</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_013.jpg" loading="lazy"><span>013 &mdash; Port&eacute; tenu (crop)</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_034.jpg" loading="lazy"><span>034 &mdash; Flat lay + cachet</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_035.jpg" loading="lazy"><span>035 &mdash; Flat lay + cachet v2</span></div>
+      </div>
+      <div class="mapping-note"><strong>Or rouge :</strong> aucune photo. Manque pour cr&eacute;er la fiche or rouge.</div>
+    </div>
+
+    <!-- ── 2. Collier Céleste 3 motifs ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-missing">MANQUANT</div>
+        <div>
+          <div class="mapping-name">Collier C&eacute;leste 3 motifs</div>
+          <div class="mapping-meta">700&euro; &bull; Or blanc, or jaune, or rouge</div>
+        </div>
+      </div>
+      <div class="mapping-grid mapping-empty">
+        <p>Aucune photo identifi&eacute;e dans le shooting. Le collier 3 motifs n'a pas &eacute;t&eacute; photographi&eacute; ou n'est pas distinguable du 7 motifs.</p>
+      </div>
+      <div class="mapping-note"><strong>Bloquant</strong> &mdash; impossible de cr&eacute;er la fiche produit sans photo.</div>
+    </div>
+
+    <!-- ── 3. Pendentif Hirondelle + chaîne ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-partial">PARTIEL</div>
+        <div>
+          <div class="mapping-name">Pendentif Hirondelle + cha&icirc;ne</div>
+          <div class="mapping-meta">580&euro; &bull; Or blanc, or jaune, or rouge</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_039.jpg" loading="lazy"><span>039 &mdash; Buste or rose</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_029.jpg" loading="lazy"><span>029 &mdash; 2 cha&icirc;nes &agrave; plat (macro)</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_028.jpg" loading="lazy"><span>028 &mdash; 2 cha&icirc;nes &agrave; plat</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_002.jpg" loading="lazy"><span>002 &mdash; Port&eacute; (cha&icirc;ne fine, peu visible)</span></div>
+      </div>
+      <div class="mapping-note"><strong>Probl&egrave;me :</strong> la cha&icirc;ne est quasi invisible sur la peau. Le buste 039 est la seule photo exploitable pour la fiche. Or blanc et or jaune difficiles &agrave; distinguer.</div>
+    </div>
+
+    <!-- ── 4. Bague Céleste Grand Modèle ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-ok">OK</div>
+        <div>
+          <div class="mapping-name">Bague C&eacute;leste Grand Mod&egrave;le</div>
+          <div class="mapping-meta">1 180&euro; &bull; Argent + or 18ct + diamants</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_019.jpg" loading="lazy"><span>019 &mdash; &Eacute;crin close-up</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_022.jpg" loading="lazy"><span>022 &mdash; &Eacute;crin face + fond tropical</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_018.jpg" loading="lazy"><span>018 &mdash; &Eacute;crin + fond tropical</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_020.jpg" loading="lazy"><span>020 &mdash; &Eacute;crin profil</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_008.jpg" loading="lazy"><span>008 &mdash; Port&eacute;e + fleurs (BEST)</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_009.jpg" loading="lazy"><span>009 &mdash; Port&eacute;e + fleurs v2</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_002.jpg" loading="lazy"><span>002 &mdash; Port&eacute;e (crop bijoux)</span></div>
+      </div>
+      <div class="mapping-note" style="color:#2d6a4f"><strong>Meilleure couverture du shooting.</strong> Pi&egrave;ce signature, photos exploitables imm&eacute;diatement.</div>
+    </div>
+
+    <!-- ── 5. Bague Céleste Petit Modèle ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-partial">PARTIEL</div>
+        <div>
+          <div class="mapping-name">Bague C&eacute;leste Petit Mod&egrave;le</div>
+          <div class="mapping-meta">980&euro; &bull; Argent + or 18ct + diamants</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_024.jpg" loading="lazy"><span>024 &mdash; Paire en &eacute;crin</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_025.jpg" loading="lazy"><span>025 &mdash; Paire en &eacute;crin (fond sombre)</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_026.jpg" loading="lazy"><span>026 &mdash; Paire sur coussins</span></div>
+      </div>
+      <div class="mapping-note"><strong>Probl&egrave;me :</strong> le petit mod&egrave;le n'est visible qu'&agrave; c&ocirc;t&eacute; du grand. Pas de photo isol&eacute;e. Difficile de cr&eacute;er une fiche produit distincte.</div>
+    </div>
+
+    <!-- ── 6. Bracelet Manchette Céleste ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-missing">MANQUANT</div>
+        <div>
+          <div class="mapping-name">Bracelet Manchette C&eacute;leste</div>
+          <div class="mapping-meta">1 580&euro; &bull; Argent + or 18ct</div>
+        </div>
+      </div>
+      <div class="mapping-grid mapping-empty">
+        <p>Aucune photo dans ce shooting. La manchette n'a pas &eacute;t&eacute; photographi&eacute;e.</p>
+      </div>
+      <div class="mapping-note"><strong>Bloquant</strong> &mdash; fiche impossible sans photo. On a uniquement la vieille photo imprim&eacute;e du RDV du 06/05.</div>
+    </div>
+
+    <!-- ── 7. Bracelet Perle de Culture ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-missing">MANQUANT</div>
+        <div>
+          <div class="mapping-name">Bracelet Perle de Culture</div>
+          <div class="mapping-meta">680&euro; &bull; Perle blanche + or 18ct</div>
+        </div>
+      </div>
+      <div class="mapping-grid mapping-empty">
+        <p>Aucune photo dans ce shooting.</p>
+      </div>
+      <div class="mapping-note"><strong>Bloquant</strong> &mdash; photos existantes du RDV 06/05 disponibles (non incluses dans ce shooting).</div>
+    </div>
+
+    <!-- ── 8. Bracelet Hirondelle ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-partial">PARTIEL</div>
+        <div>
+          <div class="mapping-name">Bracelet Hirondelle</div>
+          <div class="mapping-meta">480&euro; &bull; Or blanc, or jaune, or rouge</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_036.jpg" loading="lazy"><span>036 &mdash; Sur coussin (or jaune)</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_008.jpg" loading="lazy"><span>008 &mdash; Port&eacute; au poignet</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/magaulane_007.jpg" loading="lazy"><span>007 &mdash; Port&eacute; (visible au poignet)</span></div>
+      </div>
+      <div class="mapping-note"><strong>1 seule couleur photographi&eacute;e.</strong> Or blanc et or rouge manquants.</div>
+    </div>
+
+    <!-- ── 9. Boucles d'Oreilles Hirondelle ── -->
+    <div class="mapping-product">
+      <div class="mapping-header">
+        <div class="mapping-status mapping-partial">PARTIEL</div>
+        <div>
+          <div class="mapping-name">Boucles d'Oreilles Hirondelle</div>
+          <div class="mapping-meta">850&euro;/paire &bull; Or blanc, or jaune, or rouge</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_030.jpg" loading="lazy"><span>030 &mdash; Puces sur coussin</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_031.jpg" loading="lazy"><span>031 &mdash; Composition cadeau</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_032.jpg" loading="lazy"><span>032 &mdash; Composition cadeau v2</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_033.jpg" loading="lazy"><span>033 &mdash; Composition cadeau v3</span></div>
+      </div>
+      <div class="mapping-note"><strong>Stills OK</strong> mais aucun gros plan port&eacute; &agrave; l'oreille. 1 seule couleur photographi&eacute;e.</div>
+    </div>
+
+    <!-- ── BONUS : Compositions / Packaging ── -->
+    <div class="mapping-product" style="border-color: var(--accent);">
+      <div class="mapping-header">
+        <div class="mapping-status" style="background:var(--accent);color:#fff;">BONUS</div>
+        <div>
+          <div class="mapping-name">Compositions &amp; Packaging</div>
+          <div class="mapping-meta">Visuels campagne / r&eacute;seaux sociaux</div>
+        </div>
+      </div>
+      <div class="mapping-grid">
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_031.jpg" loading="lazy"><span>031 &mdash; Coffret + BO + bague</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_032.jpg" loading="lazy"><span>032 &mdash; Coffret ruban bordeaux</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_033.jpg" loading="lazy"><span>033 &mdash; Coffret + cachet cire</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_014.jpg" loading="lazy"><span>014 &mdash; Collier or jaune en &eacute;crin</span></div>
+        <div class="mapping-thumb" onclick="openLightboxShooting(this)"><img src="photos/shooting/stills_016.jpg" loading="lazy"><span>016 &mdash; Collier or blanc en &eacute;crin</span></div>
+      </div>
+      <div class="mapping-note" style="color:#2d6a4f"><strong>Parfaits pour Instagram / Hero banner</strong> cat&eacute;gorie F&ecirc;te des M&egrave;res. Utilisables imm&eacute;diatement.</div>
+    </div>
+
+    <!-- ── RÉSUMÉ ── -->
+    <div style="margin-top:40px;background:var(--teal);border-radius:6px;padding:32px;color:rgba(255,255,255,0.85);font-size:14px;line-height:1.8;">
+      <div style="font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:16px;">R&eacute;sum&eacute;</div>
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
+            <th style="text-align:left;padding:8px 12px;color:rgba(255,255,255,0.6);font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:1px;">Statut</th>
+            <th style="text-align:left;padding:8px 12px;color:rgba(255,255,255,0.6);font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:1px;">Produits</th>
+            <th style="text-align:right;padding:8px 12px;color:rgba(255,255,255,0.6);font-weight:400;text-transform:uppercase;font-size:11px;letter-spacing:1px;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:10px 12px;"><span style="background:#2d6a4f;color:#fff;padding:2px 10px;border-radius:2px;font-size:11px;letter-spacing:1px;">OK</span></td>
+            <td style="padding:10px 12px;color:#fff;">Bague Grand Mod&egrave;le, Collier 7 motifs (or jaune + blanc)</td>
+            <td style="padding:10px 12px;text-align:right;">Fiche Prismic cr&eacute;able maintenant</td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+            <td style="padding:10px 12px;"><span style="background:#e69500;color:#fff;padding:2px 10px;border-radius:2px;font-size:11px;letter-spacing:1px;">PARTIEL</span></td>
+            <td style="padding:10px 12px;color:#fff;">Pendentif Hirondelle, Bague Petit Mod&egrave;le, Bracelet Hirondelle, Boucles d'Oreilles</td>
+            <td style="padding:10px 12px;text-align:right;">Exploitable avec retouche / recadrage</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;"><span style="background:#c1121f;color:#fff;padding:2px 10px;border-radius:2px;font-size:11px;letter-spacing:1px;">MANQUANT</span></td>
+            <td style="padding:10px 12px;color:#fff;">Collier 3 motifs, Manchette C&eacute;leste, Bracelet Perle</td>
+            <td style="padding:10px 12px;text-align:right;">Besoin de nouvelles photos</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
@@ -1219,6 +1551,16 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.pricing-card').forEach(card => observer.observe(card));
+
+    function openLightboxShooting(el) {
+      const img = el.querySelector('img');
+      if (!img) return;
+      const overlay = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.src = img.src;
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
   </script>
 
 </body>
